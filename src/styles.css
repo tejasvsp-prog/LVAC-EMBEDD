@@ -194,25 +194,13 @@ section { position: relative; }
   letter-spacing: -0.01em;
 }
 .brand__seal {
-  width: 36px; height: 36px;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
+  width: 44px; height: 44px;
   display: grid;
   place-items: center;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  font-weight: 600;
   position: relative;
-  background: var(--paper);
+  background: transparent;
 }
-.brand__seal::after {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px dashed var(--line-mid);
-  border-radius: 50%;
-}
+.brand__seal--logo svg { display: block; }
 .brand__txt { line-height: 1; }
 .brand__sub {
   display: block;
@@ -339,11 +327,15 @@ section { position: relative; }
   background: var(--ink);
   overflow: hidden;
 }
-.hero__media image-slot {
+.hero__media image-slot,
+.hero__media .hero__photo {
   --slot-bg: #102a4d;
   --slot-fg: rgba(238,244,237,0.55);
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.92) contrast(1.05);
 }
 .hero__media::after {
   /* film grain / vignette */

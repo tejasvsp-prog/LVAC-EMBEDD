@@ -2,6 +2,108 @@
 const { useState, useEffect, useRef, useMemo } = React;
 
 /* =========================================================
+   LAVC Logo — flag-pattern V with curved school text.
+   Two variants: Mark (V only) and Full (curved text + star + V).
+   ========================================================= */
+const LOGO_NAVY = "#1e3a6b";
+const LOGO_RED  = "#c8202c";
+const LOGO_CREAM = "#f7f2e3";
+
+function starPath(cx, cy, r) {
+  const pts = [
+    [0,-1],[0.225,-0.31],[0.951,-0.31],[0.363,0.118],[0.588,0.809],
+    [0,0.382],[-0.588,0.809],[-0.363,0.118],[-0.951,-0.31],[-0.225,-0.31]
+  ];
+  return pts.map(([x,y]) => `${cx + x*r},${cy + y*r}`).join(" ");
+}
+
+function LogoMark({ size = 36, title = "L.A.V.C." }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={title}>
+      <defs>
+        <clipPath id="lm-left"><polygon points="10,18 50,18 50,90"/></clipPath>
+        <clipPath id="lm-right"><polygon points="50,18 90,18 50,90"/></clipPath>
+      </defs>
+      <polygon points="10,18 50,18 50,90" fill={LOGO_NAVY}/>
+      <g fill="#fff" clipPath="url(#lm-left)">
+        <polygon points={starPath(20, 27, 2.2)}/>
+        <polygon points={starPath(30, 27, 2.2)}/>
+        <polygon points={starPath(40, 27, 2.2)}/>
+        <polygon points={starPath(25, 38, 2.2)}/>
+        <polygon points={starPath(35, 38, 2.2)}/>
+        <polygon points={starPath(45, 38, 2.2)}/>
+        <polygon points={starPath(30, 49, 2.2)}/>
+        <polygon points={starPath(40, 49, 2.2)}/>
+        <polygon points={starPath(35, 60, 2.2)}/>
+        <polygon points={starPath(45, 60, 2.2)}/>
+        <polygon points={starPath(42, 71, 2.2)}/>
+      </g>
+      <polygon points="50,18 90,18 50,90" fill={LOGO_RED}/>
+      <g clipPath="url(#lm-right)" fill={LOGO_CREAM}>
+        <rect x="50" y="26" width="50" height="5"/>
+        <rect x="50" y="36" width="50" height="5"/>
+        <rect x="50" y="46" width="50" height="5"/>
+        <rect x="50" y="56" width="50" height="5"/>
+        <rect x="50" y="66" width="50" height="5"/>
+        <rect x="50" y="76" width="50" height="5"/>
+      </g>
+    </svg>
+  );
+}
+
+function LogoFull({ width = 140, title = "L.A.V.C." }) {
+  return (
+    <svg width={width} viewBox="0 0 200 200" role="img" aria-label={title}>
+      <defs>
+        <path id="lf-arc" d="M 30 70 Q 100 18 170 70" fill="none"/>
+        <clipPath id="lf-left"><polygon points="30,92 100,92 100,180"/></clipPath>
+        <clipPath id="lf-right"><polygon points="100,92 170,92 100,180"/></clipPath>
+      </defs>
+      <text fontFamily="Georgia, 'Source Serif 4', serif" fontWeight="900"
+            fontSize="32" fill="currentColor" letterSpacing="4">
+        <textPath href="#lf-arc" startOffset="50%" textAnchor="middle">L.A.V.C.</textPath>
+      </text>
+      <polygon points={starPath(100, 80, 11)} fill={LOGO_NAVY}/>
+      <polygon points="30,92 100,92 100,180" fill={LOGO_NAVY}/>
+      <g fill="#fff" clipPath="url(#lf-left)">
+        <polygon points={starPath(45, 102, 2.6)}/>
+        <polygon points={starPath(58, 102, 2.6)}/>
+        <polygon points={starPath(71, 102, 2.6)}/>
+        <polygon points={starPath(84, 102, 2.6)}/>
+        <polygon points={starPath(97, 102, 2.6)}/>
+        <polygon points={starPath(52, 114, 2.6)}/>
+        <polygon points={starPath(65, 114, 2.6)}/>
+        <polygon points={starPath(78, 114, 2.6)}/>
+        <polygon points={starPath(91, 114, 2.6)}/>
+        <polygon points={starPath(60, 126, 2.6)}/>
+        <polygon points={starPath(73, 126, 2.6)}/>
+        <polygon points={starPath(86, 126, 2.6)}/>
+        <polygon points={starPath(67, 138, 2.6)}/>
+        <polygon points={starPath(80, 138, 2.6)}/>
+        <polygon points={starPath(93, 138, 2.6)}/>
+        <polygon points={starPath(74, 150, 2.6)}/>
+        <polygon points={starPath(87, 150, 2.6)}/>
+        <polygon points={starPath(82, 162, 2.6)}/>
+        <polygon points={starPath(95, 162, 2.6)}/>
+      </g>
+      <polygon points="100,92 170,92 100,180" fill={LOGO_RED}/>
+      <g clipPath="url(#lf-right)" fill={LOGO_CREAM}>
+        <rect x="100" y="100" width="80" height="5"/>
+        <rect x="100" y="111" width="80" height="5"/>
+        <rect x="100" y="122" width="80" height="5"/>
+        <rect x="100" y="133" width="80" height="5"/>
+        <rect x="100" y="144" width="80" height="5"/>
+        <rect x="100" y="155" width="80" height="5"/>
+        <rect x="100" y="166" width="80" height="5"/>
+      </g>
+    </svg>
+  );
+}
+
+/* Community photo URL — verified Unsplash CDN, replace with your own */
+const COMMUNITY_PHOTO_URL = "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=900&h=1100&q=80";
+
+/* =========================================================
    Decorative SVG: AI node constellation
    ========================================================= */
 function NodeNet({ count = 26, color = "#EEF4ED", accent = "#D62828", density = 1, animated = true }) {
@@ -103,7 +205,7 @@ function Nav() {
     <header className={"nav" + (scrolled ? " is-scrolled" : "")}>
       <div className="container nav__inner">
         <a href="#top" className="brand" aria-label="LVAC AI Summit home">
-          <span className="brand__seal">LVAC</span>
+          <span className="brand__seal brand__seal--logo"><LogoMark size={40} /></span>
           <span className="brand__txt">
             Lansing AI Summit
             <span className="brand__sub">& Workforce Forum · 2026</span>
@@ -163,11 +265,13 @@ function Hero() {
 
           <div className="hero__media reveal">
             <span className="hero__media-tag"><span className="dot"></span>Peckham, Inc. · Lansing, MI</span>
-            <image-slot
-              id="hero-photo"
-              shape="rect"
-              placeholder="Drop a Lansing / community photo here"
-            ></image-slot>
+            <img
+              className="hero__photo"
+              src={COMMUNITY_PHOTO_URL}
+              alt="A diverse community of learners and workers connecting around the future of work."
+              loading="eager"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
             <div className="hero__nodes">
               <NodeNet count={32} color="#EEF4ED" accent="#D62828" density={1.1} />
             </div>
@@ -574,6 +678,9 @@ function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
+            <div className="footer__logo" style={{color: "var(--paper)", marginBottom: 20}}>
+              <LogoFull width={120} />
+            </div>
             <h3>Lansing AI Summit & Workforce Forum</h3>
             <p>A community-centered convening on the future of AI-powered work, hosted by Peckham, Inc. in Lansing, Michigan.</p>
           </div>
