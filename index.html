@@ -1,932 +1,2343 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lansing AI Summit &amp; Workforce Forum</title>
-<meta name="description" content="A one-day hybrid event connecting students, veterans, small business owners, and employers around the future of AI-powered work." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
-<style>
-  /* ============ Tokens ============ */
-  :root{
-    --navy:#0d1b3d;
-    --navy-2:#142547;
-    --navy-3:#1c3160;
-    --gold:#e5b94b;
-    --gold-2:#f2c75c;
-    --gold-soft:#fde9b0;
-    --cream:#f5f1e8;
-    --cream-2:#ece6d6;
-    --ink:#0d1b3d;
-    --ink-soft:#3a4a6b;
-    --muted:#6b7a92;
-    --red:#9b2c2c;
-    --green:#1f6b3e;
-    --white:#ffffff;
-    --border:rgba(13,27,61,.10);
-    --radius:14px;
-    --radius-lg:22px;
-    --shadow-sm:0 2px 8px rgba(13,27,61,.06);
-    --shadow:0 12px 40px rgba(13,27,61,.12);
-    --shadow-lg:0 24px 60px rgba(13,27,61,.18);
-    --shadow-gold:0 10px 30px rgba(229,185,75,.35);
-    --maxw:1180px;
-    --ease:cubic-bezier(.4,0,.2,1);
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:80px}
-  body{
-    font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    background:var(--white);color:var(--ink);line-height:1.6;
-    overflow-x:hidden;-webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em;line-height:1.1;color:inherit}
-  h1{font-size:clamp(2.4rem,5.6vw,4.6rem);letter-spacing:-.035em}
-  h2{font-size:clamp(1.85rem,3.8vw,2.7rem);letter-spacing:-.025em}
-  h3{font-size:1.15rem}
-  a{color:inherit;text-decoration:none}
-  img,svg{display:block;max-width:100%}
-  .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  section{padding:104px 0;position:relative}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
-    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--red);font-weight:700;margin-bottom:18px;
-  }
-  .eyebrow::before{content:"";width:24px;height:2px;background:var(--red);border-radius:2px}
-  .eyebrow.gold{color:var(--gold)}
-  .eyebrow.gold::before{background:var(--gold)}
-  .lead{color:var(--ink-soft);font-size:1.05rem;max-width:640px}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lansing AI Summit &amp; Workforce Forum &middot; 2026</title>
+  <meta name="description" content="A one-day hybrid event connecting students, veterans, small business owners, and employers around the future of AI-powered work." />
 
-  /* ============ Scroll progress ============ */
-  #progress{
-    position:fixed;top:0;left:0;height:3px;width:0;
-    background:linear-gradient(90deg,var(--gold),var(--gold-2));
-    z-index:60;transition:width .1s linear;box-shadow:0 0 8px rgba(229,185,75,.6);
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
-  /* ============ Navigation ============ */
-  .nav{
-    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);
-    backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);
-    border-bottom:1px solid transparent;transition:all .3s var(--ease);
-  }
-  .nav.scrolled{border-bottom-color:var(--border);box-shadow:var(--shadow-sm);background:rgba(255,255,255,.95)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .logo{
-    font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.3rem;
-    color:var(--ink);letter-spacing:-.01em;
-  }
-  .logo .ai{color:var(--gold);font-style:italic;font-weight:700}
-  .nav-links{display:flex;gap:36px;align-items:center}
-  .nav-links a{
-    font-size:.95rem;color:var(--ink-soft);font-weight:500;
-    transition:color .2s;position:relative;padding:6px 0;
-  }
-  .nav-links a:not(.btn)::after{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
-    background:var(--gold);transform:scaleX(0);transform-origin:center;
-    transition:transform .25s var(--ease);
-  }
-  .nav-links a.active,.nav-links a:not(.btn):hover{color:var(--ink);font-weight:600}
-  .nav-links a.active::after,.nav-links a:not(.btn):hover::after{transform:scaleX(1)}
-  .nav-search{
-    background:none;border:0;color:var(--ink-soft);cursor:pointer;padding:6px;
-    transition:color .2s;
-  }
-  .nav-search:hover{color:var(--ink)}
-  .nav-search svg{width:20px;height:20px}
-  .nav-toggle{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:8px}
-  .nav-toggle svg{width:24px;height:24px}
+  <style>
+/* =========================================================
+   LVAC AI Summit — Civic Editorial Theme
+   ========================================================= */
 
-  /* ============ Buttons ============ */
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:14px 28px;border-radius:999px;font-weight:700;font-size:.95rem;
-    border:1px solid transparent;cursor:pointer;transition:all .25s var(--ease);
-    font-family:inherit;white-space:nowrap;
-  }
-  .btn-primary{background:var(--gold);color:var(--navy);box-shadow:var(--shadow-gold)}
-  .btn-primary:hover{background:var(--gold-2);transform:translateY(-2px);box-shadow:0 16px 36px rgba(229,185,75,.5)}
-  .btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:var(--white)}
-  .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6)}
-  .btn-dark{background:var(--navy);color:var(--white)}
-  .btn-dark:hover{background:var(--navy-2);transform:translateY(-1px)}
-  .btn-sm{padding:9px 18px;font-size:.85rem}
+:root {
+  /* palette */
+  --ink:          #0B2545;
+  --ink-2:        #13335a;
+  --ink-3:        #1d4373;
+  --paper:        #EEF4ED;
+  --paper-warm:   #F6F2E8;
+  --paper-card:   #FFFDF8;
+  --slate:        #8DA9C4;
+  --slate-deep:   #4A6B8A;
+  --red:          #D62828;
+  --red-dim:      #B81F1F;
+  --gold:         #C9A24A;
 
-  /* ============ Hero ============ */
-  .hero{
-    background:var(--navy);color:var(--white);padding:120px 0 140px;
-    position:relative;overflow:hidden;
-  }
-  .hero::before{
-    content:"";position:absolute;inset:0;
-    background-image:
-      radial-gradient(circle at 18% 28%,rgba(229,185,75,.12),transparent 42%),
-      radial-gradient(circle at 82% 72%,rgba(229,185,75,.07),transparent 42%);
-    pointer-events:none;
-  }
-  .hero::after{
-    content:"";position:absolute;inset:0;
-    background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
-    background-size:24px 24px;
-    mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%);
-    pointer-events:none;
-  }
-  .hero .container{position:relative;z-index:1}
-  .hero-top{display:flex;justify-content:center;margin-bottom:32px}
-  .pill{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:10px 22px;border-radius:999px;
-    border:1px solid rgba(229,185,75,.5);background:rgba(229,185,75,.08);
-    color:var(--gold);font-weight:600;font-size:.85rem;letter-spacing:.12em;
-  }
-  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.2)}}
-  .hero h1{text-align:center;max-width:1000px;margin:0 auto}
-  .hero h1 .gold{
-    color:var(--gold);background:linear-gradient(135deg,#f2c75c 0%,#e5b94b 50%,#d4a73f 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .hero .sub{
-    text-align:center;max-width:680px;margin:28px auto 36px;
-    color:rgba(255,255,255,.78);font-size:1.1rem;
-  }
-  .hero-meta{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:14px 32px;margin-bottom:44px;
-    color:rgba(255,255,255,.8);font-size:.95rem;
-  }
-  .hero-meta span{display:inline-flex;align-items:center;gap:10px}
-  .hero-meta .meta-icon{
-    width:32px;height:32px;border-radius:8px;background:rgba(229,185,75,.12);
-    border:1px solid rgba(229,185,75,.25);display:grid;place-items:center;
-  }
-  .hero-meta .meta-icon svg{width:16px;height:16px;color:var(--gold)}
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  /* derived */
+  --line:         rgba(11, 37, 69, 0.12);
+  --line-mid:     rgba(11, 37, 69, 0.22);
+  --line-strong:  rgba(11, 37, 69, 0.55);
+  --ink-soft:     rgba(11, 37, 69, 0.62);
+  --ink-faint:    rgba(11, 37, 69, 0.42);
 
-  /* Floating accent cards in hero */
-  .hero-cards{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-    max-width:880px;margin:80px auto 0;
-  }
-  .hero-card{
-    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);
-    border-radius:14px;padding:22px;backdrop-filter:blur(8px);
-    transition:all .3s var(--ease);
-  }
-  .hero-card:hover{
-    background:rgba(255,255,255,.08);border-color:rgba(229,185,75,.4);
-    transform:translateY(-4px);
-  }
-  .hero-card .h{
-    display:flex;align-items:center;gap:10px;
-    color:var(--gold);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;margin-bottom:10px;
-  }
-  .hero-card .h svg{width:14px;height:14px}
-  .hero-card .v{font-weight:700;font-size:1.05rem;color:var(--white);line-height:1.35}
+  /* type */
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --sans:  "Geist", "Söhne", -apple-system, "Helvetica Neue", sans-serif;
+  --mono:  "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 
-  /* ============ Section transitions (slanted dividers) ============ */
-  .section-divider-top{
-    position:absolute;top:0;left:0;right:0;height:60px;pointer-events:none;
-  }
+  /* layout */
+  --gutter: clamp(20px, 4vw, 56px);
+  --maxw: 1280px;
+  --rule: 1px solid var(--line);
+}
 
-  /* ============ About ============ */
-  .about{background:var(--white)}
-  .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
-  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .stat{
-    background:var(--cream);border:1px solid var(--border);
-    border-radius:var(--radius);padding:24px;transition:all .25s var(--ease);
-    position:relative;overflow:hidden;
-  }
-  .stat::after{
-    content:"";position:absolute;top:0;left:0;width:100%;height:3px;
-    background:var(--gold);transform:scaleX(0);transform-origin:left;
-    transition:transform .3s var(--ease);
-  }
-  .stat:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
-  .stat:hover::after{transform:scaleX(1)}
-  .stat .n{
-    font-size:2.5rem;font-weight:800;color:var(--navy);
-    letter-spacing:-.03em;line-height:1;margin-bottom:8px;font-family:'Fraunces',serif;
-  }
-  .stat .l{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
-  .stat.dark{
-    background:var(--navy);color:var(--white);border-color:var(--navy-2);
-    grid-column:span 2;display:flex;align-items:center;gap:24px;padding:28px;
-  }
-  .stat.dark::after{background:var(--gold)}
-  .stat.dark .icon-wrap{
-    width:64px;height:64px;border-radius:14px;flex-shrink:0;
-    background:rgba(229,185,75,.12);border:1px solid rgba(229,185,75,.3);
-    display:grid;place-items:center;
-  }
-  .stat.dark .icon-wrap svg{width:30px;height:30px;color:var(--gold)}
-  .stat.dark .label{font-size:.95rem;font-weight:600;color:rgba(255,255,255,.9);line-height:1.35}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  /* ============ Benefits (NEW) ============ */
-  .benefits{background:var(--white);padding-top:0}
-  .benefits-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;
-  }
-  .benefit{
-    border:1px solid var(--border);border-radius:var(--radius);padding:32px 26px;
-    transition:all .3s var(--ease);background:var(--white);position:relative;
-  }
-  .benefit:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
-  .benefit .num{
-    position:absolute;top:18px;right:22px;font-family:'Fraunces',serif;
-    font-size:2.5rem;font-weight:600;color:var(--cream-2);line-height:1;
-    transition:color .25s;
-  }
-  .benefit:hover .num{color:var(--gold)}
-  .benefit .ico{
-    width:48px;height:48px;border-radius:12px;background:var(--cream);
-    display:grid;place-items:center;margin-bottom:18px;
-    transition:all .25s;
-  }
-  .benefit .ico svg{width:24px;height:24px;color:var(--navy)}
-  .benefit:hover .ico{background:var(--navy)}
-  .benefit:hover .ico svg{color:var(--gold)}
-  .benefit h3{font-size:1.15rem;margin-bottom:10px}
-  .benefit p{color:var(--ink-soft);font-size:.94rem}
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+}
 
-  /* ============ Audiences ============ */
-  .audiences{background:var(--cream)}
-  .audiences-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
-  .audience{
-    background:var(--white);border:1px solid var(--border);
-    border-radius:var(--radius);padding:32px 26px;text-align:center;
-    transition:all .3s var(--ease);position:relative;overflow:hidden;
-  }
-  .audience::before{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:0;
-    background:linear-gradient(180deg,transparent,rgba(229,185,75,.08));
-    transition:height .35s var(--ease);
-  }
-  .audience:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--gold)}
-  .audience:hover::before{height:100%}
-  .audience > *{position:relative}
-  .audience .icon{
-    width:56px;height:56px;border-radius:14px;margin:0 auto 20px;
-    background:var(--navy);display:grid;place-items:center;
-    transition:transform .3s var(--ease);
-  }
-  .audience .icon svg{width:26px;height:26px;color:var(--gold)}
-  .audience:hover .icon{transform:scale(1.06) rotate(-3deg)}
-  .audience h3{font-size:1.08rem;margin-bottom:12px}
-  .audience p{color:var(--ink-soft);font-size:.9rem;line-height:1.55}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
 
-  /* ============ Agenda ============ */
-  .agenda{background:var(--white)}
-  .agenda-list{
-    margin-top:48px;border:1px solid var(--border);border-radius:var(--radius-lg);
-    overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm);
-  }
-  .agenda-row{
-    display:grid;grid-template-columns:140px 1fr;
-    border-bottom:1px solid var(--border);transition:background .25s;
-  }
-  .agenda-row:last-child{border-bottom:0}
-  .agenda-row:hover{background:#fafaf6}
-  .agenda-time{
-    background:var(--navy);color:var(--white);
-    display:flex;align-items:center;justify-content:center;
-    font-weight:700;font-size:.92rem;letter-spacing:-.01em;
-    padding:24px 14px;text-align:center;position:relative;
-  }
-  .agenda-time::after{
-    content:"";position:absolute;right:-8px;top:50%;transform:translateY(-50%);
-    width:16px;height:16px;background:var(--navy);
-    clip-path:polygon(0 0,0 100%,100% 50%);
-  }
-  .agenda-body{padding:24px 36px}
-  .agenda-body .title{font-weight:700;font-size:1.05rem;margin-bottom:6px;color:var(--ink)}
-  .agenda-body .desc{color:var(--ink-soft);font-size:.92rem;margin-bottom:12px}
-  .tag{
-    display:inline-block;padding:5px 12px;border-radius:999px;
-    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
-  }
-  .tag.networking{background:#e6f4ec;color:var(--green)}
-  .tag.keynote{background:#e8edf8;color:var(--navy)}
-  .tag.lunch{background:#fdf3df;color:#8a6a14}
-  .tag.panel{background:#fbe9e9;color:var(--red)}
+::selection { background: var(--ink); color: var(--paper); }
 
-  .tracks-row .tracks-label{
-    color:var(--red);font-size:.72rem;letter-spacing:.18em;font-weight:700;
-    text-transform:uppercase;margin-bottom:14px;
-  }
-  .tracks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .track-card{
-    background:var(--cream);border:1px solid var(--border);
-    border-radius:10px;padding:16px 18px;transition:all .25s var(--ease);
-    border-top:3px solid var(--gold);
-  }
-  .track-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);background:var(--white)}
-  .track-card .t-title{font-weight:700;font-size:.95rem;margin-bottom:6px;color:var(--ink)}
-  .track-card .t-desc{color:var(--ink-soft);font-size:.85rem;line-height:1.45}
+/* ---------- Typography ---------- */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.eyebrow .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
 
-  /* ============ Partners ============ */
-  .partners{background:var(--cream)}
-  .partners-anchor{
-    margin-top:48px;background:var(--white);border:1px solid var(--border);
-    border-radius:var(--radius-lg);padding:36px;border-left:5px solid var(--gold);
-    box-shadow:var(--shadow-sm);transition:box-shadow .25s;
-  }
-  .partners-anchor:hover{box-shadow:var(--shadow)}
-  .partners-anchor-eyebrow{
-    display:inline-block;padding:5px 12px;border-radius:6px;
-    background:var(--gold-soft);color:#8a6a14;
-    font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
-    margin-bottom:14px;
-  }
-  .partners-anchor-inner{display:flex;gap:24px;align-items:flex-start}
-  .partners-anchor .anchor-icon{
-    width:62px;height:62px;border-radius:14px;background:var(--navy);
-    display:grid;place-items:center;flex-shrink:0;
-  }
-  .partners-anchor .anchor-icon svg{width:28px;height:28px;color:var(--gold)}
-  .partners-anchor h3{font-size:1.45rem;margin-bottom:8px;font-family:'Fraunces',serif;font-weight:600}
-  .partners-anchor p{color:var(--ink-soft);font-size:.95rem}
-  .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
-  .partner-card{
-    background:var(--white);border:1px solid var(--border);
-    border-radius:12px;padding:24px;text-align:center;
-    transition:all .25s var(--ease);
-  }
-  .partner-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:var(--gold)}
-  .partner-card .icon{
-    width:46px;height:46px;border-radius:10px;margin:0 auto 12px;
-    background:var(--cream-2);display:grid;place-items:center;transition:all .25s;
-  }
-  .partner-card:hover .icon{background:var(--gold-soft)}
-  .partner-card .icon svg{width:22px;height:22px;color:var(--navy)}
-  .partner-card .label{font-size:.9rem;font-weight:600;color:var(--ink)}
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; margin: 0; letter-spacing: -0.01em; line-height: 1.05; }
+h1 { font-size: clamp(48px, 7.6vw, 124px); letter-spacing: -0.025em; }
+h2 { font-size: clamp(36px, 4.6vw, 72px); }
+h3 { font-size: clamp(22px, 2vw, 30px); line-height: 1.15; }
+h4 { font-size: 18px; line-height: 1.2; }
+.it { font-style: italic; font-weight: 400; }
 
-  /* ============ Register section (Google Form embed) ============ */
-  .register{background:var(--white);padding-top:104px;padding-bottom:104px}
-  .register-wrap{
-    background:var(--navy);border-radius:var(--radius-lg);
-    overflow:hidden;box-shadow:var(--shadow-lg);position:relative;
-  }
-  .register-wrap::before{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at top right,rgba(229,185,75,.10),transparent 50%);
-    pointer-events:none;
-  }
-  .register-head{
-    padding:48px 48px 36px;color:var(--white);position:relative;text-align:center;
-  }
-  .register-head h2{color:var(--white);margin-bottom:14px}
-  .register-head p{color:rgba(255,255,255,.78);max-width:580px;margin:0 auto}
-  .form-frame-wrap{
-    background:var(--white);margin:0 24px 24px;border-radius:16px;overflow:hidden;
-    box-shadow:0 8px 24px rgba(0,0,0,.25);
-  }
-  .form-frame-wrap iframe{
-    width:100%;border:0;display:block;height:1400px;background:var(--white);
-  }
-  .form-fallback{
-    text-align:center;padding:32px;color:var(--muted);font-size:.92rem;
-  }
-  .form-fallback a{color:var(--gold);font-weight:600;text-decoration:underline}
+p { margin: 0; }
 
-  /* ============ FAQ (NEW) ============ */
-  .faq{background:var(--cream)}
-  .faq-grid{display:grid;gap:12px;max-width:860px;margin:48px auto 0}
-  details.q{
-    background:var(--white);border:1px solid var(--border);
-    border-radius:14px;overflow:hidden;transition:all .25s var(--ease);
-  }
-  details.q[open]{border-color:var(--gold);box-shadow:var(--shadow-sm)}
-  details.q summary{
-    list-style:none;padding:22px 26px;cursor:pointer;font-weight:700;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;
-    color:var(--ink);
-  }
-  details.q summary::-webkit-details-marker{display:none}
-  details.q summary::after{
-    content:"";width:28px;height:28px;border-radius:50%;flex-shrink:0;
-    background:var(--cream);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%230d1b3d' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
-    background-position:center;background-repeat:no-repeat;background-size:14px;
-    transition:transform .3s var(--ease),background-color .25s;
-  }
-  details.q[open] summary::after{
-    transform:rotate(135deg);background-color:var(--gold);
-  }
-  details.q .answer{padding:0 26px 22px;color:var(--ink-soft);font-size:.95rem}
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 0;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn .arrow { transition: transform .25s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+.btn:hover { background: var(--red); border-color: var(--red); }
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn--ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn--lg { padding: 18px 28px; font-size: 15px; }
 
-  /* ============ CTA strip ============ */
-  .cta-strip{
-    background:var(--navy);color:var(--white);text-align:center;
-    padding:80px 0;position:relative;overflow:hidden;border-top:4px solid var(--gold);
-  }
-  .cta-strip::before{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at center,rgba(229,185,75,.15),transparent 60%);
-    pointer-events:none;
-  }
-  .cta-strip .container{position:relative;z-index:1}
-  .cta-strip h2{color:var(--white);margin-bottom:16px}
-  .cta-strip p{color:rgba(255,255,255,.78);max-width:560px;margin:0 auto 28px}
+/* ---------- Layout primitives ---------- */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
 
-  /* ============ Footer ============ */
-  footer{background:var(--navy);color:rgba(255,255,255,.7);padding:60px 0 36px;border-top:1px solid var(--navy-2)}
-  .foot-top{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
-  .foot-top .star{
-    width:32px;height:32px;border-radius:9px;background:rgba(229,185,75,.15);
-    display:grid;place-items:center;
-  }
-  .foot-top .star svg{width:16px;height:16px;color:var(--gold)}
-  .foot-top .brand{color:var(--white);font-weight:700;font-size:1rem;letter-spacing:.01em}
-  .foot-line{text-align:center;font-size:.92rem;margin-bottom:10px;color:rgba(255,255,255,.85)}
-  .foot-contact{
-    text-align:center;font-size:.9rem;color:rgba(255,255,255,.55);
-    display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:6px;
-  }
-  .foot-contact a{color:var(--gold);font-weight:500;transition:opacity .2s}
-  .foot-contact a:hover{opacity:.8;text-decoration:underline}
-  .foot-tag{
-    text-align:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-    color:rgba(255,255,255,.4);margin-top:22px;
-  }
+section { position: relative; }
+.section { padding: clamp(72px, 9vw, 140px) 0; }
+.section--dense { padding: clamp(56px, 7vw, 100px) 0; }
 
-  /* ============ Sticky mobile register button ============ */
-  .sticky-cta{
-    display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
-    z-index:45;box-shadow:0 16px 40px rgba(0,0,0,.3);
-  }
+.rule { border-top: var(--rule); }
+.rule-strong { border-top: 1px solid var(--line-strong); }
 
-  /* ============ Reveal ============ */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
-  .reveal[data-delay="1"]{transition-delay:.08s}
-  .reveal[data-delay="2"]{transition-delay:.16s}
-  .reveal[data-delay="3"]{transition-delay:.24s}
+.sec-head {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: var(--rule);
+  margin-bottom: 56px;
+}
+.sec-head__label { padding-top: 8px; }
+.sec-head__body { max-width: 760px; }
+.sec-head__body h2 { margin-bottom: 20px; }
+.sec-head__body p { font-size: 17px; color: var(--ink-soft); max-width: 620px; }
+@media (max-width: 800px) {
+  .sec-head { grid-template-columns: 1fr; gap: 20px; padding-bottom: 32px; margin-bottom: 40px; }
+}
 
-  /* ============ Responsive ============ */
-  @media (max-width:980px){
-    .nav-links{display:none}
-    .nav-toggle{display:inline-flex}
-    .nav-links.open{
-      display:flex;flex-direction:column;align-items:flex-start;gap:18px;
-      position:absolute;top:72px;left:0;right:0;padding:22px 28px;
-      background:var(--white);border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm);
-    }
-    .about-grid{grid-template-columns:1fr;gap:40px}
-    .hero-cards{grid-template-columns:1fr;max-width:420px;margin-top:60px}
-    .audiences-grid,.benefits-grid{grid-template-columns:repeat(2,1fr)}
-    .partners-grid{grid-template-columns:repeat(2,1fr)}
-    .tracks-grid{grid-template-columns:1fr}
-    .agenda-row{grid-template-columns:120px 1fr}
-    .agenda-time::after{display:none}
-    section{padding:80px 0}
-    .register-head{padding:36px 24px 28px}
-    .form-frame-wrap{margin:0 14px 14px}
-    .form-frame-wrap iframe{height:1500px}
-    .sticky-cta{display:inline-flex}
-  }
-  @media (max-width:560px){
-    .audiences-grid,.benefits-grid,.partners-grid{grid-template-columns:1fr}
-    .stat.dark{flex-direction:column;text-align:center;gap:14px}
-    .partners-anchor-inner{flex-direction:column}
-    .partners-anchor{padding:28px}
-    .agenda-row{grid-template-columns:1fr}
-    .agenda-time{padding:14px 28px;justify-content:flex-start}
-    .agenda-body{padding:22px 28px}
-    .hero{padding:90px 0 110px}
-    .pill{font-size:.72rem;padding:8px 16px}
-    .form-frame-wrap iframe{height:1700px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
-    html{scroll-behavior:auto}
-  }
-</style>
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal--stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.reveal--stagger.is-in > * { opacity: 1; transform: none; }
+.reveal--stagger.is-in > *:nth-child(1) { transition-delay: .05s; }
+.reveal--stagger.is-in > *:nth-child(2) { transition-delay: .15s; }
+.reveal--stagger.is-in > *:nth-child(3) { transition-delay: .25s; }
+.reveal--stagger.is-in > *:nth-child(4) { transition-delay: .35s; }
+.reveal--stagger.is-in > *:nth-child(5) { transition-delay: .45s; }
+.reveal--stagger.is-in > *:nth-child(6) { transition-delay: .55s; }
+
+/* =========================================================
+   Nav
+   ========================================================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(238, 244, 237, 0.82);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s ease, background .25s ease;
+}
+.nav.is-scrolled {
+  border-bottom-color: var(--line);
+  background: rgba(238, 244, 237, 0.94);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+.brand__seal {
+  width: 36px; height: 36px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  position: relative;
+  background: var(--paper);
+}
+.brand__seal::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed var(--line-mid);
+  border-radius: 50%;
+}
+.brand__txt { line-height: 1; }
+.brand__sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  font-weight: 500;
+}
+.nav__links {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.nav__links a {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  color: var(--ink-soft);
+  transition: color .2s;
+  position: relative;
+}
+.nav__links a:hover { color: var(--ink); }
+.nav__links a::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  bottom: 6px;
+  width: 0;
+  height: 1px;
+  background: var(--red);
+  transition: width .25s ease;
+}
+.nav__links a:hover::before { width: calc(100% - 28px); }
+.nav__cta {
+  margin-left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background .2s;
+}
+.nav__cta:hover { background: var(--red); }
+@media (max-width: 820px) {
+  .nav__links a:not(.nav__cta) { display: none; }
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  position: relative;
+  padding: 56px 0 0;
+  overflow: hidden;
+}
+.hero__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 32px;
+  border-bottom: var(--rule);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero__meta-item { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.hero__meta-item strong { color: var(--ink); font-weight: 500; margin-left: 8px; }
+
+.hero__title {
+  padding: clamp(48px, 7vw, 96px) 0 clamp(36px, 4vw, 64px);
+  position: relative;
+}
+.hero__title h1 {
+  font-weight: 400;
+  max-width: 14ch;
+}
+.hero__title h1 .accent { font-style: italic; color: var(--ink-3); font-weight: 400; }
+.hero__title h1 .amp {
+  font-style: italic;
+  color: var(--red);
+  font-weight: 400;
+  font-size: 0.85em;
+}
+
+.hero__lower {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+  padding-bottom: clamp(40px, 5vw, 80px);
+}
+@media (max-width: 900px) {
+  .hero__lower { grid-template-columns: 1fr; }
+}
+.hero__lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 38ch;
+  font-weight: 400;
+}
+.hero__lede .it { color: var(--ink-3); }
+.hero__cta-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* Hero photo + node motif */
+.hero__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--ink);
+  overflow: hidden;
+}
+.hero__media image-slot {
+  --slot-bg: #102a4d;
+  --slot-fg: rgba(238,244,237,0.55);
+  width: 100%;
+  height: 100%;
+}
+.hero__media::after {
+  /* film grain / vignette */
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 80% at 50% 100%, rgba(11,37,69,0) 40%, rgba(11,37,69,0.55) 100%),
+    radial-gradient(80% 60% at 0% 0%, rgba(141,169,196,0.18), transparent 60%);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+.hero__media-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: rgba(11,37,69,0.6);
+  backdrop-filter: blur(6px);
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero__media-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 2.2s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(214,40,40,0.6); }
+  50% { opacity: 0.6; transform: scale(1.1); box-shadow: 0 0 0 8px rgba(214,40,40,0); }
+}
+.hero__nodes {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero__strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+.hero__strip-item {
+  padding: 28px 24px;
+  border-right: var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hero__strip-item:last-child { border-right: none; }
+.hero__strip-item .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.hero__strip-item .v { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 36px); font-weight: 500; line-height: 1.05; }
+.hero__strip-item .v .small { font-size: 0.55em; color: var(--ink-soft); margin-left: 4px; }
+@media (max-width: 800px) {
+  .hero__strip { grid-template-columns: repeat(2, 1fr); }
+  .hero__strip-item:nth-child(2n) { border-right: none; }
+  .hero__strip-item:nth-child(-n+2) { border-bottom: var(--rule); }
+}
+
+/* =========================================================
+   About
+   ========================================================= */
+.about {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: center;
+}
+@media (max-width: 900px) { .about__inner { grid-template-columns: 1fr; } }
+.about__visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.about__quote {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.25;
+  max-width: 24ch;
+  padding: 32px;
+}
+.about__quote .mark {
+  display: block;
+  font-size: 80px;
+  line-height: 0.5;
+  margin-bottom: 24px;
+  color: var(--red);
+  font-style: italic;
+}
+.about__visual-net {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.about__copy h2 { margin-bottom: 28px; max-width: 12ch; }
+.about__copy p { color: var(--ink-soft); font-size: 18px; line-height: 1.55; margin-bottom: 18px; max-width: 50ch; }
+.about__copy .lead { font-family: var(--serif); font-size: 22px; color: var(--ink); line-height: 1.4; margin-bottom: 24px; }
+.about__copy .btn { margin-top: 16px; }
+
+/* =========================================================
+   Why Attend (numbered cards)
+   ========================================================= */
+.why {
+  background: var(--paper);
+}
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.why__card {
+  padding: 48px 36px 56px;
+  border-right: var(--rule);
+  border-top: 1px solid var(--line-strong);
+  position: relative;
+  transition: background .3s ease;
+}
+.why__card:last-child { border-right: none; }
+.why__card:hover { background: var(--paper-warm); }
+.why__card .num {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--red);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.why__card .num::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.why__card h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  max-width: 16ch;
+}
+.why__card p { color: var(--ink-soft); font-size: 15.5px; line-height: 1.55; }
+@media (max-width: 800px) {
+  .why__grid { grid-template-columns: 1fr; }
+  .why__card { border-right: none; }
+}
+
+/* =========================================================
+   Audiences
+   ========================================================= */
+.aud {
+  border-top: 1px solid var(--line-strong);
+  background: var(--ink);
+  color: var(--paper);
+}
+.aud .eyebrow { color: rgba(238,244,237,0.7); }
+.aud .eyebrow .dot { background: var(--gold); }
+.aud .sec-head { border-bottom-color: rgba(238,244,237,0.15); }
+.aud .sec-head__body p { color: rgba(238,244,237,0.7); }
+.aud__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(238,244,237,0.15);
+}
+@media (max-width: 1000px) { .aud__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .aud__grid { grid-template-columns: 1fr; } }
+.aud__card {
+  padding: 40px 32px 44px;
+  border-right: 1px solid rgba(238,244,237,0.15);
+  position: relative;
+  transition: background .3s ease;
+  cursor: default;
+}
+.aud__card:last-child { border-right: none; }
+.aud__card:hover { background: rgba(141,169,196,0.08); }
+.aud__card .icon {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(238,244,237,0.3);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 28px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+}
+.aud__card h3 { font-size: 26px; margin-bottom: 12px; }
+.aud__card p { color: rgba(238,244,237,0.65); font-size: 14.5px; line-height: 1.55; }
+.aud__card .track-pill {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(238,244,237,0.55);
+  padding-top: 16px;
+  border-top: 1px solid rgba(238,244,237,0.12);
+  width: 100%;
+  transition: color .2s;
+}
+.aud__card:hover .track-pill { color: var(--gold); }
+@media (max-width: 1000px) {
+  .aud__card:nth-child(2n) { border-right: none; }
+  .aud__card:nth-child(-n+2) { border-bottom: 1px solid rgba(238,244,237,0.15); }
+}
+@media (max-width: 560px) {
+  .aud__card { border-right: none; border-bottom: 1px solid rgba(238,244,237,0.15); }
+  .aud__card:last-child { border-bottom: none; }
+}
+
+/* =========================================================
+   Agenda
+   ========================================================= */
+.agenda { background: var(--paper); }
+.agenda__filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: var(--rule);
+  align-items: center;
+}
+.agenda__filter-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: 16px;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 14px;
+  border: 1px solid var(--line-mid);
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 999px;
+  transition: all .2s ease;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink); }
+.chip.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.agenda__list {
+  position: relative;
+}
+.agenda__item {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: var(--rule);
+  position: relative;
+  transition: background .3s ease, padding .3s ease;
+  align-items: start;
+}
+.agenda__item:last-of-type { border-bottom: var(--rule); }
+.agenda__item:hover { background: var(--paper-warm); padding-left: 16px; padding-right: 16px; }
+.agenda__item.is-dimmed { opacity: 0.25; }
+.agenda__time {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.agenda__time .sub { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-top: 6px; font-weight: 400; }
+.agenda__body h3 { font-size: 22px; margin-bottom: 10px; line-height: 1.2; }
+.agenda__body p { color: var(--ink-soft); font-size: 15px; max-width: 56ch; }
+.agenda__tracks { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.agenda__track-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid var(--line-mid);
+  color: var(--ink-soft);
+  background: var(--paper-card);
+  border-radius: 2px;
+}
+.agenda__track-tag[data-track="student"]   { border-color: rgba(214,40,40,0.35); color: var(--red); background: rgba(214,40,40,0.05); }
+.agenda__track-tag[data-track="veteran"]   { border-color: rgba(11,37,69,0.45); color: var(--ink); background: rgba(11,37,69,0.04); }
+.agenda__track-tag[data-track="business"]  { border-color: rgba(74,107,138,0.5); color: var(--slate-deep); background: rgba(141,169,196,0.12); }
+.agenda__track-tag[data-track="all"]       { border-color: var(--line-mid); color: var(--ink-soft); }
+.agenda__tag {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  padding-top: 6px;
+}
+.agenda__sessions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+@media (max-width: 800px) { .agenda__sessions { grid-template-columns: 1fr; } }
+.agenda__session {
+  padding: 18px 18px;
+  border-left: 3px solid var(--line-mid);
+  background: var(--paper-card);
+  transition: border-color .25s ease, transform .25s ease;
+}
+.agenda__session:hover { transform: translateX(2px); }
+.agenda__session[data-track="student"]  { border-left-color: var(--red); }
+.agenda__session[data-track="veteran"]  { border-left-color: var(--ink); }
+.agenda__session[data-track="business"] { border-left-color: var(--slate-deep); }
+.agenda__session .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.agenda__session h4 { font-family: var(--serif); font-size: 16px; line-height: 1.25; font-weight: 500; }
+
+@media (max-width: 800px) {
+  .agenda__item { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
+  .agenda__item:hover { padding-left: 0; padding-right: 0; }
+  .agenda__tag { padding-top: 0; }
+}
+
+/* =========================================================
+   Partners
+   ========================================================= */
+.partners { background: var(--paper-warm); border-top: 1px solid var(--line-strong); }
+
+.partners__host {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  padding: 48px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-mid);
+  position: relative;
+  margin-bottom: 64px;
+}
+@media (max-width: 800px) { .partners__host { grid-template-columns: 1fr; padding: 32px; gap: 24px; } }
+.partners__host::before {
+  content: "ANCHOR · HOST";
+  position: absolute;
+  top: -10px;
+  left: 32px;
+  background: var(--paper-warm);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  padding: 0 12px;
+  font-weight: 500;
+}
+.partners__host-logo {
+  aspect-ratio: 4/3;
+  background: var(--ink);
+  display: grid;
+  place-items: center;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+}
+.partners__host-logo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(60% 80% at 30% 20%, rgba(141,169,196,0.2), transparent 70%);
+}
+.partners__host-body h3 { font-size: 36px; margin-bottom: 14px; }
+.partners__host-body p { color: var(--ink-soft); font-size: 16px; line-height: 1.6; max-width: 50ch; }
+
+.partners__cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: var(--rule);
+}
+@media (max-width: 900px) { .partners__cats { grid-template-columns: 1fr; } }
+.partners__cat {
+  padding: 32px 28px 32px 0;
+  border-right: var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.partners__cat:last-child { border-right: none; }
+@media (max-width: 900px) {
+  .partners__cat { border-right: none; border-bottom: var(--rule); padding: 24px 0; }
+  .partners__cat:last-child { border-bottom: none; }
+}
+.partners__cat .eyebrow { color: var(--red); }
+.partners__cat .eyebrow .dot { background: var(--red); }
+.partners__cat h3 { font-size: 22px; }
+.partners__cat .logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.partners__logo {
+  height: 56px;
+  min-width: 110px;
+  flex: 1 1 110px;
+  background: var(--paper-card);
+  border: 1px dashed var(--line-mid);
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 8px;
+  text-align: center;
+  transition: all .2s;
+}
+.partners__logo:hover { color: var(--ink); border-style: solid; border-color: var(--ink); }
+
+/* =========================================================
+   Register
+   ========================================================= */
+.register {
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.register .eyebrow { color: rgba(238,244,237,0.7); }
+.register .eyebrow .dot { background: var(--red); }
+.register .sec-head { border-bottom-color: rgba(238,244,237,0.15); }
+.register .sec-head__body p { color: rgba(238,244,237,0.75); }
+.register__net {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  pointer-events: none;
+}
+.register__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 900px) { .register__inner { grid-template-columns: 1fr; } }
+.register__side h3 { font-size: 28px; margin-bottom: 16px; }
+.register__side p { color: rgba(238,244,237,0.75); font-size: 15.5px; line-height: 1.6; margin-bottom: 16px; max-width: 38ch; }
+.register__bullets {
+  list-style: none;
+  padding: 0; margin: 24px 0 0;
+  display: flex; flex-direction: column;
+  gap: 14px;
+}
+.register__bullets li {
+  display: flex; gap: 14px;
+  font-size: 14.5px;
+  align-items: flex-start;
+  color: rgba(238,244,237,0.9);
+}
+.register__bullets li::before {
+  content: "+";
+  color: var(--red);
+  font-family: var(--mono);
+  font-weight: 600;
+  flex: 0 0 16px;
+}
+.register__form-shell {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid rgba(238,244,237,0.15);
+  position: relative;
+}
+.register__form-head {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.register__form-head .status { color: var(--red); display: inline-flex; align-items: center; gap: 8px; }
+.register__form-head .status .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+.register__form-head a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; font-size: 10.5px; }
+.register__form-head a:hover { color: var(--ink); }
+.register__form iframe {
+  display: block;
+  width: 100%;
+  height: 820px;
+  border: 0;
+  background: var(--paper);
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq { background: var(--paper); border-top: 1px solid var(--line-strong); }
+.faq__inner {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+}
+@media (max-width: 900px) { .faq__inner { grid-template-columns: 1fr; gap: 40px; } }
+.faq__intro h2 { margin-bottom: 16px; }
+.faq__intro p { color: var(--ink-soft); font-size: 16px; }
+.faq__list { border-top: 1px solid var(--line-strong); }
+.faq__item {
+  border-bottom: var(--rule);
+  transition: background .25s ease;
+}
+.faq__item:last-child { border-bottom: 1px solid var(--line-strong); }
+.faq__q {
+  width: 100%;
+  background: none;
+  border: 0;
+  text-align: left;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.faq__q:hover { color: var(--red); }
+.faq__icon {
+  flex: 0 0 28px;
+  width: 28px; height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-mid);
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--ink);
+  transition: transform .3s ease, background .25s, color .25s, border-color .25s;
+  font-weight: 400;
+  line-height: 1;
+}
+.faq__item.is-open .faq__icon { transform: rotate(45deg); background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.faq__a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .4s ease, padding .3s ease;
+}
+.faq__item.is-open .faq__a { max-height: 400px; padding: 0 0 28px; }
+.faq__a p { color: var(--ink-soft); font-size: 16px; line-height: 1.65; max-width: 60ch; }
+.faq__a a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+
+/* =========================================================
+   Closing CTA
+   ========================================================= */
+.cta {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  text-align: center;
+  padding: clamp(80px, 10vw, 160px) 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta__net { position: absolute; inset: 0; opacity: 0.35; pointer-events: none; }
+.cta__inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 var(--gutter); }
+.cta h2 { font-size: clamp(40px, 5.5vw, 88px); margin-bottom: 28px; font-weight: 400; }
+.cta h2 .it { font-style: italic; color: var(--red); }
+.cta p { color: var(--ink-soft); font-size: 17px; max-width: 50ch; margin: 0 auto 36px; }
+.cta__row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 0 32px;
+  font-size: 14px;
+}
+.footer__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(238,244,237,0.15);
+}
+@media (max-width: 800px) { .footer__top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .footer__top { grid-template-columns: 1fr; } }
+.footer__brand h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 12px; max-width: 18ch; }
+.footer__brand p { color: rgba(238,244,237,0.65); max-width: 36ch; }
+.footer__col h4 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(238,244,237,0.5);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer__col a { color: rgba(238,244,237,0.85); transition: color .2s; }
+.footer__col a:hover { color: var(--red); }
+.footer__bottom {
+  display: flex; justify-content: space-between;
+  padding-top: 28px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(238,244,237,0.55);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer__values {
+  padding: 24px 0;
+  border-top: 1px solid rgba(238,244,237,0.1);
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 60px);
+  flex-wrap: wrap;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(238,244,237,0.7);
+}
+.footer__values span { display: inline-flex; align-items: center; gap: 14px; }
+.footer__values span::after {
+  content: "✦";
+  color: var(--red);
+  font-style: normal;
+}
+.footer__values span:last-child::after { display: none; }
+
+  </style>
 </head>
 <body>
+  <div id="root"></div>
 
-<div id="progress"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#top" class="logo">LAVC <span class="ai">Ai</span> Summit</a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#top" class="active">Welcome</a>
-      <a href="#agenda">Agenda</a>
-      <a href="#audiences">Who</a>
-      <a href="#partners">Partners</a>
-      <a href="#register" class="btn btn-dark btn-sm">Register</a>
-      <button class="nav-search" aria-label="Search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </div>
-</header>
+  <script>
+/**
+ * <image-slot> — user-fillable image placeholder.
+ *
+ * Drop this into a deck, mockup, or page wherever you want the user to
+ * supply an image. You control the slot's shape and size; the user fills it
+ * by dragging an image file onto it (or clicking to browse). The dropped
+ * image persists across reloads via a .image-slots.state.json sidecar —
+ * same read-via-fetch / write-via-window.omelette pattern as
+ * design_canvas.jsx, so the filled slot shows on share links, downloaded
+ * zips, and PPTX export. Outside the omelette runtime the slot is read-only.
+ *
+ * The host bridge only allows sidecar writes at the project root, so the
+ * HTML that uses this component is assumed to live at the project root too
+ * (same constraint as design_canvas.jsx).
+ *
+ * Attributes:
+ *   id           Persistence key. REQUIRED for the drop to survive reload —
+ *                every slot on the page needs a distinct id.
+ *   shape        'rect' | 'rounded' | 'circle' | 'pill'   (default 'rounded')
+ *                'circle' applies 50% border-radius; on a non-square slot
+ *                that's an ellipse — set equal width and height for a true
+ *                circle.
+ *   radius       Corner radius in px for 'rounded'.       (default 12)
+ *   mask         Any CSS clip-path value. Overrides `shape` — use this for
+ *                hexagons, blobs, arbitrary polygons.
+ *   fit          object-fit: cover | contain | fill.       (default 'cover')
+ *                With cover (the default) double-clicking the filled slot
+ *                enters a reframe mode: the whole image spills past the mask
+ *                (translucent outside, opaque inside), drag to reposition,
+ *                corner-drag to scale. The crop persists alongside the image
+ *                in the sidecar. contain/fill stay static.
+ *   position     object-position for fit=contain|fill.     (default '50% 50%')
+ *   placeholder  Empty-state caption.                      (default 'Drop an image')
+ *   src          Optional initial/fallback image URL. A user drop overrides
+ *                it; clearing the drop reveals src again.
+ *
+ * Size and layout come from ordinary CSS on the element — width/height
+ * inline or from a parent grid — so it composes with any layout.
+ *
+ * Usage:
+ *   <script src="image-slot.js"><\/script>
+ *   <image-slot id="hero"   style="width:800px;height:450px" shape="rounded" radius="20"
+ *               placeholder="Drop a hero image"></image-slot>
+ *   <image-slot id="avatar" style="width:120px;height:120px" shape="circle"></image-slot>
+ *   <image-slot id="kite"   style="width:300px;height:300px"
+ *               mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)"></image-slot>
+ */
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="container">
-    <div class="hero-top reveal">
-      <span class="pill"><span class="dot"></span>LANSING, MICHIGAN &middot; 2026</span>
-    </div>
-    <h1 class="reveal">Lansing <span class="gold">AI Summit</span><br/>&amp; Workforce Forum</h1>
-    <p class="sub reveal">A one-day hybrid event connecting students, veterans, small business owners, and employers around the future of AI-powered work.</p>
-    <div class="hero-meta reveal">
-      <span><span class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>TBD — Save the Date</span>
-      <span><span class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Peckham, Inc. — Lansing, MI</span>
-      <span><span class="meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>In-Person + Virtual</span>
-    </div>
-    <div class="cta-row reveal">
-      <a href="#register" class="btn btn-primary">Register Now
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="#agenda" class="btn btn-ghost">View Agenda</a>
-    </div>
+(() => {
+  const STATE_FILE = '.image-slots.state.json';
+  // 2× a ~600px slot in a 1920-wide deck — retina-sharp without making the
+  // sidecar enormous. A 1200px WebP at q=0.85 is ~150-300KB.
+  const MAX_DIM = 1200;
+  // Raster formats only. SVG is excluded (can carry script; createImageBitmap
+  // on SVG blobs is inconsistent). GIF is excluded because the canvas
+  // re-encode keeps only the first frame, so an animated GIF would silently
+  // go still — better to reject than surprise.
+  const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
 
-    <div class="hero-cards">
-      <div class="hero-card reveal" data-delay="1">
-        <div class="h">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Duration
-        </div>
-        <div class="v">One focused day, 8 AM – 3 PM</div>
-      </div>
-      <div class="hero-card reveal" data-delay="2">
-        <div class="h">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Audience
-        </div>
-        <div class="v">Students, veterans, business &amp; employers</div>
-      </div>
-      <div class="hero-card reveal" data-delay="3">
-        <div class="h">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9"/></svg>
-          Cost
-        </div>
-        <div class="v">Free &amp; open to the community</div>
-      </div>
-    </div>
-  </div>
-</section>
+  // ── Shared sidecar store ────────────────────────────────────────────────
+  // One fetch + immediate write-on-change for every <image-slot> on the
+  // page. Reads via fetch() so viewing works anywhere the HTML and sidecar
+  // are served together; writes go through window.omelette.writeFile, which
+  // the host allowlists to *.state.json basenames only.
+  const subs = new Set();
+  let slots = {};
+  // ids explicitly cleared before the sidecar fetch resolved — otherwise
+  // the merge below can't tell "never set" from "just deleted" and would
+  // resurrect the sidecar's stale value.
+  const tombstones = new Set();
+  let loaded = false;
+  let loadP = null;
 
-<!-- ============ ABOUT ============ -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="reveal">
-        <span class="eyebrow">About the Summit</span>
-        <h2>AI Is Reshaping Work.<br/>Be Ready.</h2>
-        <p class="lead" style="margin-top:18px">
-          The Lansing AI Summit brings together community leaders, employers, educators, and workforce professionals to explore how artificial intelligence is transforming hiring, training, and economic opportunity — and how our region can lead the way.
-        </p>
-        <div style="margin-top:28px"><a href="#register" class="btn btn-dark">Reserve Your Spot</a></div>
-      </div>
-      <div class="reveal">
-        <div class="stats-grid">
-          <div class="stat"><div class="n">1</div><div class="l">Focused Day</div></div>
-          <div class="stat"><div class="n">4+</div><div class="l">Audience Tracks</div></div>
-          <div class="stat"><div class="n">Hybrid</div><div class="l">Format</div></div>
-          <div class="stat"><div class="n">Free</div><div class="l">Community Event</div></div>
-          <div class="stat dark">
-            <div class="icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/>
-                <line x1="12" y1="3" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21"/>
-                <line x1="3" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="21" y2="12"/>
-              </svg>
-            </div>
-            <div class="label">Where AI Meets Community Workforce Development</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BENEFITS (NEW) ============ -->
-<section class="benefits">
-  <div class="container">
-    <div class="reveal" style="max-width:720px">
-      <span class="eyebrow">Why Attend</span>
-      <h2>What you'll walk away with</h2>
-      <p class="lead" style="margin-top:18px">A day designed to deliver real, actionable value — not just talk.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit reveal">
-        <div class="num">01</div>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <h3>Practical AI Knowledge</h3>
-        <p>Learn what AI actually means for your career, classroom, or business — without the jargon.</p>
-      </div>
-      <div class="benefit reveal" data-delay="1">
-        <div class="num">02</div>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Community Connections</h3>
-        <p>Meet employers, educators, and peers shaping Michigan's AI-ready workforce in one room.</p>
-      </div>
-      <div class="benefit reveal" data-delay="2">
-        <div class="num">03</div>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h3>Clear Next Steps</h3>
-        <p>Leave with concrete tools, training paths, and hiring strategies you can put to work on Monday.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AUDIENCES ============ -->
-<section class="audiences" id="audiences">
-  <div class="container">
-    <div class="reveal" style="max-width:720px">
-      <span class="eyebrow">Who Should Attend</span>
-      <h2>Built for the Whole Community</h2>
-      <p class="lead" style="margin-top:18px">
-        Whether you're entering the workforce, rebuilding a career, growing a business, or hiring talent — there's a track designed for you.
-      </p>
-    </div>
-    <div class="audiences-grid">
-      <div class="audience reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-        <h3>Students</h3>
-        <p>High school and college students exploring AI-ready careers and skills.</p>
-      </div>
-      <div class="audience reveal" data-delay="1">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s-8-4.5-8-12V4l8-2 8 2v6c0 7.5-8 12-8 12z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Veterans</h3>
-        <p>Service members translating military experience into civilian AI-ready roles.</p>
-      </div>
-      <div class="audience reveal" data-delay="2">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-        <h3>Small Business Owners</h3>
-        <p>Entrepreneurs learning AI tools to compete and grow in today's economy.</p>
-      </div>
-      <div class="audience reveal" data-delay="3">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Employers</h3>
-        <p>HR professionals and hiring managers building AI-integrated workforce strategies.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AGENDA ============ -->
-<section class="agenda" id="agenda">
-  <div class="container">
-    <div class="reveal" style="max-width:720px">
-      <span class="eyebrow">Day at a Glance</span>
-      <h2>Event Agenda</h2>
-      <p class="lead" style="margin-top:18px">A focused day of learning, connection, and actionable insight. Final schedule forthcoming.</p>
-    </div>
-
-    <div class="agenda-list reveal">
-      <div class="agenda-row">
-        <div class="agenda-time">8:00 AM</div>
-        <div class="agenda-body">
-          <div class="title">Registration &amp; Welcome Networking</div>
-          <div class="desc">Doors open, coffee, and early connection with attendees and exhibitors.</div>
-          <span class="tag networking">Networking</span>
-        </div>
-      </div>
-
-      <div class="agenda-row">
-        <div class="agenda-time">9:00 AM</div>
-        <div class="agenda-body">
-          <div class="title">Opening Keynote: AI and the Future of Work in Michigan</div>
-          <div class="desc">Setting the stage — what AI means for workers, businesses, and our region.</div>
-          <span class="tag keynote">Keynote</span>
-        </div>
-      </div>
-
-      <div class="agenda-row tracks-row">
-        <div class="agenda-time">10:10–<br/>11:00 AM</div>
-        <div class="agenda-body">
-          <div class="tracks-label">Concurrent Morning Sessions — Choose Your Track</div>
-          <div class="tracks-grid">
-            <div class="track-card">
-              <div class="t-title">Student Track</div>
-              <div class="t-desc">AI Careers &amp; Skills for the Next Generation</div>
-            </div>
-            <div class="track-card">
-              <div class="t-title">Veteran Track</div>
-              <div class="t-desc">Translating Military Skills into AI-Ready Roles</div>
-            </div>
-            <div class="track-card">
-              <div class="t-title">Business &amp; Employer Track</div>
-              <div class="t-desc">AI Tools for Growth, Hiring &amp; Operations</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="agenda-row">
-        <div class="agenda-time">11:30 AM–<br/>12:30 PM</div>
-        <div class="agenda-body">
-          <div class="title">Lunch &amp; Resource Fair</div>
-          <div class="desc">Connect with training programs, community organizations, and employers over lunch.</div>
-          <span class="tag lunch">Lunch Break</span>
-        </div>
-      </div>
-
-      <div class="agenda-row">
-        <div class="agenda-time">1:10–<br/>2:30 PM</div>
-        <div class="agenda-body">
-          <div class="title">Panel Discussion &amp; Closing: Employers Leading with AI</div>
-          <div class="desc">Regional employers and leaders share how they're integrating AI — followed by closing remarks and community commitments for action.</div>
-          <span class="tag panel">Panel &amp; Closing</span>
-        </div>
-      </div>
-
-      <div class="agenda-row">
-        <div class="agenda-time">2:30–<br/>3:00 PM</div>
-        <div class="agenda-body">
-          <div class="title">Closing Networking Reception</div>
-          <div class="desc">Build lasting connections. Event concludes at 3:00 PM.</div>
-          <span class="tag networking">Networking</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PARTNERS ============ -->
-<section class="partners" id="partners">
-  <div class="container">
-    <div class="reveal" style="max-width:720px">
-      <span class="eyebrow">Our Partners</span>
-      <h2>Rooted in the Community</h2>
-      <p class="lead" style="margin-top:18px">
-        The Lansing AI Summit is made possible through the leadership of mission-aligned organizations committed to equitable workforce development.
-      </p>
-    </div>
-
-    <div class="partners-anchor reveal">
-      <div class="partners-anchor-inner">
-        <div class="anchor-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div>
-          <span class="partners-anchor-eyebrow">Anchor &amp; Host Partner</span>
-          <h3>Peckham, Inc.</h3>
-          <p>A nonprofit vocational rehabilitation organization providing job training, employment, and support services to individuals with barriers to employment — and the ideal host for this community-centered event.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="partners-grid">
-      <div class="partner-card reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-        <div class="label">Academic Partners</div>
-      </div>
-      <div class="partner-card reveal" data-delay="1">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M3 10h18M9 14h6"/><path d="M8 6V3h8v3"/></svg></div>
-        <div class="label">Government &amp; City</div>
-      </div>
-      <div class="partner-card reveal" data-delay="2">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-        <div class="label">Veteran Organizations</div>
-      </div>
-      <div class="partner-card reveal" data-delay="3">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 19c.5-2 2-3 4-3s3 1 3 3"/></svg></div>
-        <div class="label">Community Nonprofits</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REGISTER (Google Form embed) ============ -->
-<section class="register" id="register">
-  <div class="container">
-    <div class="register-wrap reveal">
-      <div class="register-head">
-        <span class="eyebrow gold" style="justify-content:center">Register</span>
-        <h2>Save your seat</h2>
-        <p>Free and open to the community — in-person and virtual options available. Fill out the form below to confirm your spot.</p>
-      </div>
-      <div class="form-frame-wrap">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSfu35tfZqywYZIbR6vfgwSqnx0fD5w_6_HzwGQn66U2dxU7Ow/viewform?embedded=true"
-          title="Lansing AI Summit Registration Form"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-          Loading…
-        </iframe>
-        <div class="form-fallback">
-          Form not loading? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfu35tfZqywYZIbR6vfgwSqnx0fD5w_6_HzwGQn66U2dxU7Ow/viewform" target="_blank" rel="noopener">Open it in a new tab →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ (NEW) ============ -->
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="reveal" style="max-width:720px;margin:0 auto;text-align:center">
-      <span class="eyebrow" style="justify-content:center">FAQ</span>
-      <h2>Common questions</h2>
-      <p class="lead" style="margin:18px auto 0">Everything you need to know before the summit.</p>
-    </div>
-    <div class="faq-grid">
-      <details class="q reveal"><summary>How much does it cost to attend?</summary><div class="answer">The Lansing AI Summit is completely free and open to the community. We're committed to making this event accessible to anyone interested in the future of AI-powered work.</div></details>
-      <details class="q reveal"><summary>Is the event in-person, virtual, or both?</summary><div class="answer">Both. The summit is a hybrid event — join us in person at Peckham, Inc. in Lansing, MI, or tune in virtually from anywhere. Choose your format when you register.</div></details>
-      <details class="q reveal"><summary>Do I need any AI experience to attend?</summary><div class="answer">Not at all. The summit is built for the whole community — from curious newcomers to seasoned professionals. Every track is designed to meet you where you are.</div></details>
-      <details class="q reveal"><summary>Will lunch be provided?</summary><div class="answer">Yes — in-person attendees enjoy a complimentary lunch as part of the Resource Fair, where you can connect with training programs, community organizations, and employers.</div></details>
-      <details class="q reveal"><summary>Can my organization become a partner or sponsor?</summary><div class="answer">Absolutely. We welcome mission-aligned organizations committed to equitable workforce development. Reach out at <a href="mailto:mr.jamesbender@gmail.com" style="color:var(--red);font-weight:600">mr.jamesbender@gmail.com</a> to discuss partnership opportunities.</div></details>
-      <details class="q reveal"><summary>Will sessions be recorded?</summary><div class="answer">Keynote and panel sessions will be recorded and shared with registered attendees after the event. Concurrent track sessions are in-person experiences designed for live engagement.</div></details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA strip ============ -->
-<section class="cta-strip">
-  <div class="container">
-    <h2 class="reveal">Ready to Shape the Future of Work?</h2>
-    <p class="reveal">Reserve your spot at the Lansing AI Summit. Free and open to the community — in-person and virtual options available.</p>
-    <div class="reveal"><a href="#register" class="btn btn-primary">Register Now
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a></div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="container">
-    <div class="foot-top">
-      <span class="star"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9"/></svg></span>
-      <span class="brand">MissionScope Solutions, LLC</span>
-    </div>
-    <div class="foot-line">Lansing AI Summit &amp; Workforce Forum &nbsp;|&nbsp; Hosted by Peckham, Inc.</div>
-    <div class="foot-contact">
-      <a href="mailto:mr.jamesbender@gmail.com">mr.jamesbender@gmail.com</a>
-      <span>·</span>
-      <a href="tel:5178253737">517-825-3737</a>
-      <span>·</span>
-      <a href="https://linkedin.com/in/jbender24" target="_blank" rel="noopener">linkedin.com/in/jbender24</a>
-    </div>
-    <div class="foot-tag">Mission Scope · Insight · Connection · Service · Development</div>
-  </div>
-</footer>
-
-<!-- Sticky mobile CTA -->
-<a href="#register" class="btn btn-primary sticky-cta">Register Now</a>
-
-<script>
-  // Scroll progress + nav shadow
-  const progress = document.getElementById('progress');
-  const nav = document.getElementById('nav');
-  function onScroll(){
-    const h = document.documentElement;
-    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-    progress.style.width = pct + '%';
-    nav.classList.toggle('scrolled', h.scrollTop > 10);
+  function load() {
+    if (loadP) return loadP;
+    loadP = fetch(STATE_FILE)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        // Merge: sidecar loses to any in-memory change that raced ahead of
+        // the fetch (drop or clear) so neither is clobbered by hydration.
+        if (j && typeof j === 'object') {
+          const merged = Object.assign({}, j, slots);
+          // A framing-only write that raced ahead of hydration must not
+          // drop a user image that's only on disk — inherit u from the
+          // sidecar for any in-memory entry that lacks one.
+          for (const k in slots) {
+            if (merged[k] && !merged[k].u && j[k]) {
+              merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
+            }
+          }
+          for (const id of tombstones) delete merged[id];
+          slots = merged;
+        }
+        tombstones.clear();
+      })
+      .catch(() => {})
+      .then(() => { loaded = true; subs.forEach((fn) => fn()); });
+    return loadP;
   }
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  // Mobile nav
-  const navToggle = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
-  });
-  navLinks.addEventListener('click', e => {
-    if (e.target.tagName === 'A') { navLinks.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); }
-  });
+  // Serialize writes so two near-simultaneous drops on different slots
+  // can't reorder at the backend and leave the sidecar with only the
+  // first. A save requested mid-flight just marks dirty and re-fires on
+  // completion with the then-current slots.
+  let saving = false;
+  let saveDirty = false;
+  function save() {
+    if (saving) { saveDirty = true; return; }
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    saving = true;
+    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
+      .catch(() => {})
+      .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+  }
 
-  // Active nav highlight
-  const linkMap = {};
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
-    linkMap[a.getAttribute('href').slice(1)] = a;
-  });
-  const navIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        Object.values(linkMap).forEach(a => a.classList.remove('active'));
-        const a = linkMap[e.target.id];
-        if (a) a.classList.add('active');
+  const S_MAX = 5;
+  const clampS = (s) => Math.max(1, Math.min(S_MAX, s));
+
+  // Normalize a stored slot value. Pre-reframe sidecars stored a bare
+  // data-URL string; newer ones store {u, s, x, y}. Either shape is valid.
+  function getSlot(id) {
+    const v = slots[id];
+    if (!v) return null;
+    return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
+  }
+
+  function setSlot(id, val) {
+    if (!id) return;
+    if (val) { slots[id] = val; tombstones.delete(id); }
+    else { delete slots[id]; if (!loaded) tombstones.add(id); }
+    subs.forEach((fn) => fn());
+    // A drop is rare + high-value — write immediately so nav-away can't lose
+    // it. Gate on the initial read so we don't overwrite a sidecar we haven't
+    // merged yet; the merge in load() keeps this change once the read lands.
+    if (loaded) save(); else load().then(save);
+  }
+
+  // ── Image downscale ─────────────────────────────────────────────────────
+  // Encode through a canvas so the sidecar carries resized bytes, not the
+  // raw upload. Longest side is capped at 2× the slot's rendered width
+  // (retina) and at MAX_DIM. WebP keeps alpha and is ~10× smaller than PNG
+  // for photos, so there's no need for per-image format picking.
+  async function toDataUrl(file, targetW) {
+    const bitmap = await createImageBitmap(file);
+    try {
+      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
+      const w = Math.max(1, Math.round(bitmap.width * scale));
+      const h = Math.max(1, Math.round(bitmap.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+      return canvas.toDataURL('image/webp', 0.85);
+    } finally {
+      bitmap.close && bitmap.close();
+    }
+  }
+
+  // ── Custom element ──────────────────────────────────────────────────────
+  const stylesheet =
+    ':host{display:inline-block;position:relative;vertical-align:top;' +
+    '  font:13px/1.3 system-ui,-apple-system,sans-serif;color:rgba(0,0,0,.55);width:240px;height:160px}' +
+    '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(0,0,0,.04)}' +
+    // .frame img (clipped) and .spill (unclipped ghost + handles) share the
+    // same left/top/width/height in frame-%, computed by _applyView(), so the
+    // inside-mask crop and the outside-mask spill stay pixel-aligned.
+    '.frame img{position:absolute;max-width:none;transform:translate(-50%,-50%);' +
+    '  -webkit-user-drag:none;user-select:none;touch-action:none}' +
+    // Reframe mode (double-click): the full image spills past the mask. The
+    // spill layer is sized to the IMAGE bounds so its corners are where the
+    // resize handles belong. The ghost <img> inside is translucent; the real
+    // clipped <img> underneath shows the opaque in-mask crop.
+    '.spill{position:absolute;transform:translate(-50%,-50%);display:none;z-index:1;' +
+    '  cursor:grab;touch-action:none}' +
+    ':host([data-panning]) .spill{cursor:grabbing}' +
+    '.spill .ghost{position:absolute;inset:0;width:100%;height:100%;opacity:.35;' +
+    '  pointer-events:none;-webkit-user-drag:none;user-select:none;' +
+    '  box-shadow:0 0 0 1px rgba(0,0,0,.2),0 12px 32px rgba(0,0,0,.2)}' +
+    '.spill .handle{position:absolute;width:12px;height:12px;border-radius:50%;' +
+    '  background:#fff;box-shadow:0 0 0 1.5px #c96442,0 1px 3px rgba(0,0,0,.3);' +
+    '  transform:translate(-50%,-50%)}' +
+    '.spill .handle[data-c=nw]{left:0;top:0;cursor:nwse-resize}' +
+    '.spill .handle[data-c=ne]{left:100%;top:0;cursor:nesw-resize}' +
+    '.spill .handle[data-c=sw]{left:0;top:100%;cursor:nesw-resize}' +
+    '.spill .handle[data-c=se]{left:100%;top:100%;cursor:nwse-resize}' +
+    ':host([data-reframe]){z-index:10}' +
+    ':host([data-reframe]) .spill{display:block}' +
+    ':host([data-reframe]) .frame{box-shadow:0 0 0 2px #c96442}' +
+    '.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;' +
+    '  justify-content:center;gap:6px;text-align:center;padding:12px;box-sizing:border-box;' +
+    '  cursor:pointer;user-select:none}' +
+    '.empty svg{opacity:.45}' +
+    '.empty .cap{max-width:90%;font-weight:500;letter-spacing:.01em}' +
+    '.empty .sub{font-size:11px}' +
+    '.empty .sub u{text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.25)}' +
+    '.empty:hover .sub u{color:rgba(0,0,0,.75);text-decoration-color:currentColor}' +
+    ':host([data-over]) .frame{outline:2px solid #c96442;outline-offset:-2px;' +
+    '  background:rgba(201,100,66,.10)}' +
+    '.ring{position:absolute;inset:0;pointer-events:none;border:1.5px dashed rgba(0,0,0,.25);' +
+    '  transition:border-color .12s}' +
+    ':host([data-over]) .ring{border-color:#c96442}' +
+    ':host([data-filled]) .ring{display:none}' +
+    // Controls sit BELOW the mask (top:100%), absolutely positioned so the
+    // author-declared slot height is unaffected. The gap is padding, not a
+    // top offset, so the hover target stays contiguous with the frame.
+    '.ctl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;' +
+    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:2;' +
+    '  white-space:nowrap}' +
+    ':host([data-filled][data-editable]:hover) .ctl,:host([data-reframe]) .ctl' +
+    '  {opacity:1;pointer-events:auto}' +
+    '.ctl button{appearance:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;' +
+    '  background:rgba(0,0,0,.65);color:#fff;font:11px/1 system-ui,-apple-system,sans-serif;' +
+    '  backdrop-filter:blur(6px)}' +
+    '.ctl button:hover{background:rgba(0,0,0,.8)}' +
+    '.err{position:absolute;left:8px;bottom:8px;right:8px;color:#b3261e;font-size:11px;' +
+    '  background:rgba(255,255,255,.85);padding:4px 6px;border-radius:5px;pointer-events:none}';
+
+  const icon =
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>' +
+    '<path d="m21 15-5-5L5 21"/></svg>';
+
+  class ImageSlot extends HTMLElement {
+    static get observedAttributes() {
+      return ['shape', 'radius', 'mask', 'fit', 'position', 'placeholder', 'src', 'id'];
+    }
+
+    constructor() {
+      super();
+      const root = this.attachShadow({ mode: 'open' });
+      // .spill and .ctl sit OUTSIDE .frame so overflow:hidden + border-radius
+      // on the frame (circle, pill, rounded) can't clip them.
+      root.innerHTML =
+        '<style>' + stylesheet + '</style>' +
+        '<div class="frame" part="frame">' +
+        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        '  <div class="empty" part="empty">' + icon +
+        '    <div class="cap"></div>' +
+        '    <div class="sub">or <u>browse files</u></div></div>' +
+        '  <div class="ring" part="ring"></div>' +
+        '</div>' +
+        '<div class="spill">' +
+        '  <img class="ghost" alt="" draggable="false">' +
+        '  <div class="handle" data-c="nw"></div><div class="handle" data-c="ne"></div>' +
+        '  <div class="handle" data-c="sw"></div><div class="handle" data-c="se"></div>' +
+        '</div>' +
+        '<div class="ctl"><button data-act="replace" title="Replace image">Replace</button>' +
+        '  <button data-act="clear" title="Remove image">Remove</button></div>' +
+        '<input type="file" accept="' + ACCEPT.join(',') + '" hidden>';
+      this._frame = root.querySelector('.frame');
+      this._ring = root.querySelector('.ring');
+      this._img = root.querySelector('.frame img');
+      this._empty = root.querySelector('.empty');
+      this._cap = root.querySelector('.cap');
+      this._sub = root.querySelector('.sub');
+      this._spill = root.querySelector('.spill');
+      this._ghost = root.querySelector('.ghost');
+      this._err = null;
+      this._input = root.querySelector('input');
+      this._depth = 0;
+      this._gen = 0;
+      this._view = { s: 1, x: 0, y: 0 };
+      this._subFn = () => this._render();
+      // Shadow-DOM listeners live with the shadow DOM — bound once here so
+      // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
+      this._empty.addEventListener('click', () => this._input.click());
+      root.addEventListener('click', (e) => {
+        const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
+        if (act === 'replace') { this._exitReframe(true); this._input.click(); }
+        if (act === 'clear') {
+          this._exitReframe(false);
+          this._gen++;
+          this._local = null;
+          if (this.id) setSlot(this.id, null); else this._render();
+        }
+      });
+      this._input.addEventListener('change', () => {
+        const f = this._input.files && this._input.files[0];
+        if (f) this._ingest(f);
+        this._input.value = '';
+      });
+      // naturalWidth/Height aren't known until load — re-apply so the cover
+      // baseline is computed from real dimensions, not the 100%×100% fallback.
+      this._img.addEventListener('load', () => this._applyView());
+      // Gated on editable + fit=cover so share links and contain/fill slots
+      // stay static.
+      this.addEventListener('dblclick', (e) => {
+        if (!this.hasAttribute('data-editable') || !this._reframes()) return;
+        e.preventDefault();
+        if (this.hasAttribute('data-reframe')) this._exitReframe(true);
+        else this._enterReframe();
+      });
+      // Pan + resize both originate on the spill layer. A handle pointerdown
+      // drives an aspect-locked resize anchored at the opposite corner; any
+      // other pointerdown on the spill pans. Offsets are frame-% so a
+      // reframed slot survives responsive resize / PPTX export.
+      this._spill.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || !this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        this._spill.setPointerCapture(e.pointerId);
+        const rect = this.getBoundingClientRect();
+        const fw = rect.width || 1, fh = rect.height || 1;
+        const corner = e.target.getAttribute && e.target.getAttribute('data-c');
+        let move;
+        if (corner) {
+          // Resize about the OPPOSITE corner. Viewport-px throughout (rect
+          // fw/fh, not clientWidth) so the math survives a transform:scale()
+          // ancestor — deck_stage renders slides scaled-to-fit.
+          const iw = this._img.naturalWidth || 1, ih = this._img.naturalHeight || 1;
+          const base = Math.max(fw / iw, fh / ih);
+          const sx = corner.includes('e') ? 1 : -1;
+          const sy = corner.includes('s') ? 1 : -1;
+          const s0 = this._view.s;
+          const w0 = iw * base * s0, h0 = ih * base * s0;
+          const cx0 = (50 + this._view.x) / 100 * fw;
+          const cy0 = (50 + this._view.y) / 100 * fh;
+          const ox = cx0 - sx * w0 / 2, oy = cy0 - sy * h0 / 2;
+          const diag0 = Math.hypot(w0, h0);
+          const ux = sx * w0 / diag0, uy = sy * h0 / diag0;
+          move = (ev) => {
+            const proj = (ev.clientX - rect.left - ox) * ux +
+                         (ev.clientY - rect.top - oy) * uy;
+            const s = clampS(s0 * proj / diag0);
+            const d = diag0 * s / s0;
+            this._view.s = s;
+            this._view.x = (ox + ux * d / 2) / fw * 100 - 50;
+            this._view.y = (oy + uy * d / 2) / fh * 100 - 50;
+            this._clampView();
+            this._applyView();
+          };
+        } else {
+          this.setAttribute('data-panning', '');
+          const start = { px: e.clientX, py: e.clientY, x: this._view.x, y: this._view.y };
+          move = (ev) => {
+            this._view.x = start.x + (ev.clientX - start.px) / fw * 100;
+            this._view.y = start.y + (ev.clientY - start.py) / fh * 100;
+            this._clampView();
+            this._applyView();
+          };
+        }
+        const up = () => {
+          try { this._spill.releasePointerCapture(e.pointerId); } catch {}
+          this._spill.removeEventListener('pointermove', move);
+          this._spill.removeEventListener('pointerup', up);
+          this._spill.removeEventListener('pointercancel', up);
+          this.removeAttribute('data-panning');
+          this._dragUp = null;
+        };
+        // Stashed so _exitReframe (Escape / outside-click mid-drag) can
+        // tear the capture + listeners down synchronously.
+        this._dragUp = up;
+        this._spill.addEventListener('pointermove', move);
+        this._spill.addEventListener('pointerup', up);
+        this._spill.addEventListener('pointercancel', up);
+      });
+      // Wheel zoom stays available inside reframe mode as a trackpad nicety —
+      // zooms toward the cursor (offset' = cursor·(1-k) + offset·k).
+      this.addEventListener('wheel', (e) => {
+        if (!this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        const r = this.getBoundingClientRect();
+        const cx = (e.clientX - r.left) / r.width * 100 - 50;
+        const cy = (e.clientY - r.top) / r.height * 100 - 50;
+        const prev = this._view.s;
+        const next = clampS(prev * Math.pow(1.0015, -e.deltaY));
+        if (next === prev) return;
+        const k = next / prev;
+        this._view.s = next;
+        this._view.x = cx * (1 - k) + this._view.x * k;
+        this._view.y = cy * (1 - k) + this._view.y * k;
+        this._clampView();
+        this._applyView();
+      }, { passive: false });
+    }
+
+    connectedCallback() {
+      // Warn once per page — an id-less slot works for the session but
+      // cannot persist, and two id-less slots would share nothing.
+      if (!this.id && !ImageSlot._warned) {
+        ImageSlot._warned = true;
+        console.warn('<image-slot> without an id will not persist its dropped image.');
       }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  ['top','agenda','audiences','partners','register'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) navIO.observe(el);
-  });
+      this.addEventListener('dragenter', this);
+      this.addEventListener('dragover', this);
+      this.addEventListener('dragleave', this);
+      this.addEventListener('drop', this);
+      subs.add(this._subFn);
+      // width%/height% in _applyView encode the frame aspect at call time —
+      // a host resize (responsive grid, pane divider) would stretch the
+      // image until the next _render. Re-render on size change: _render()
+      // re-seeds _view from stored before clamp/apply, so a shrink→grow
+      // cycle round-trips instead of ratcheting x/y toward the narrower
+      // frame's clamp range.
+      this._ro = new ResizeObserver(() => this._render());
+      this._ro.observe(this);
+      load();
+      this._render();
+    }
 
-  // Reveal on scroll
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+    disconnectedCallback() {
+      subs.delete(this._subFn);
+      this.removeEventListener('dragenter', this);
+      this.removeEventListener('dragover', this);
+      this.removeEventListener('dragleave', this);
+      this.removeEventListener('drop', this);
+      if (this._ro) { this._ro.disconnect(); this._ro = null; }
+      this._exitReframe(false);
+    }
+
+    _enterReframe() {
+      if (this.hasAttribute('data-reframe')) return;
+      this.setAttribute('data-reframe', '');
+      this._applyView();
+      // Close on click outside (the spill handler stopPropagation()s so
+      // in-image drags don't reach this) and on Escape. Listeners are held
+      // on the instance so _exitReframe / disconnectedCallback can detach
+      // exactly what was attached.
+      this._outside = (e) => {
+        if (e.composedPath && e.composedPath().includes(this)) return;
+        this._exitReframe(true);
+      };
+      this._esc = (e) => { if (e.key === 'Escape') this._exitReframe(true); };
+      document.addEventListener('pointerdown', this._outside, true);
+      document.addEventListener('keydown', this._esc, true);
+    }
+
+    _exitReframe(commit) {
+      if (!this.hasAttribute('data-reframe')) return;
+      if (this._dragUp) this._dragUp();
+      this.removeAttribute('data-reframe');
+      this.removeAttribute('data-panning');
+      if (this._outside) document.removeEventListener('pointerdown', this._outside, true);
+      if (this._esc) document.removeEventListener('keydown', this._esc, true);
+      this._outside = this._esc = null;
+      if (commit) this._commitView();
+    }
+
+    attributeChangedCallback() { if (this.shadowRoot) this._render(); }
+
+    // handleEvent — one listener object for all four drag events keeps the
+    // add/remove symmetric and the depth counter correct.
+    handleEvent(e) {
+      if (e.type === 'dragenter' || e.type === 'dragover') {
+        // Without preventDefault the browser never fires 'drop'.
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+        if (e.type === 'dragenter') this._depth++;
+        this.setAttribute('data-over', '');
+      } else if (e.type === 'dragleave') {
+        // dragenter/leave fire for every descendant crossing — count depth
+        // so hovering the icon inside the empty state doesn't flicker.
+        if (--this._depth <= 0) { this._depth = 0; this.removeAttribute('data-over'); }
+      } else if (e.type === 'drop') {
+        e.preventDefault();
+        e.stopPropagation();
+        this._depth = 0;
+        this.removeAttribute('data-over');
+        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) this._ingest(f);
+      }
+    }
+
+    async _ingest(file) {
+      this._setError(null);
+      if (!file || ACCEPT.indexOf(file.type) < 0) {
+        this._setError('Drop a PNG, JPEG, WebP, or AVIF image.');
+        return;
+      }
+      // toDataUrl can take hundreds of ms on a large photo. A Clear or a
+      // newer drop during that window would be clobbered when this await
+      // resumes — bump + capture a generation so stale encodes bail.
+      const gen = ++this._gen;
+      try {
+        const w = this.clientWidth || this.offsetWidth || MAX_DIM;
+        const url = await toDataUrl(file, w);
+        if (gen !== this._gen) return;
+        // Only exit reframe once the new image is in hand — a rejected type
+        // or decode failure leaves the in-progress crop untouched.
+        this._exitReframe(false);
+        const val = { u: url, s: 1, x: 0, y: 0 };
+        setSlot(this.id || '', val);
+        // Keep a session-local copy for id-less slots so the drop still
+        // shows, even though it cannot persist.
+        if (!this.id) { this._local = val; this._render(); }
+      } catch (err) {
+        if (gen !== this._gen) return;
+        this._setError('Could not read that image.');
+        console.warn('<image-slot> ingest failed:', err);
+      }
+    }
+
+    _setError(msg) {
+      if (this._err) { this._err.remove(); this._err = null; }
+      if (!msg) return;
+      const d = document.createElement('div');
+      d.className = 'err'; d.textContent = msg;
+      this.shadowRoot.appendChild(d);
+      this._err = d;
+      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, 3000);
+    }
+
+    // Reframing (pan/resize) is only meaningful for fit=cover — contain/fill
+    // keep the old object-fit path and double-click is a no-op.
+    _reframes() {
+      return this.hasAttribute('data-filled') &&
+        (this.getAttribute('fit') || 'cover') === 'cover';
+    }
+
+    // Cover-baseline geometry, shared by clamp/apply/resize. Null until the
+    // img has loaded (naturalWidth is 0 before that) or when the slot has no
+    // layout box — ResizeObserver fires with a 0×0 rect under display:none,
+    // and clamping against a degenerate 1×1 frame would silently pull the
+    // stored pan toward zero.
+    _geom() {
+      const iw = this._img.naturalWidth, ih = this._img.naturalHeight;
+      const fw = this.clientWidth, fh = this.clientHeight;
+      if (!iw || !ih || !fw || !fh) return null;
+      return { iw, ih, fw, fh, base: Math.max(fw / iw, fh / ih) };
+    }
+
+    _clampView() {
+      // Pan range on each axis is half the overflow past the frame edge.
+      const g = this._geom();
+      if (!g) return;
+      const mx = Math.max(0, (g.iw * g.base * this._view.s / g.fw - 1) * 50);
+      const my = Math.max(0, (g.ih * g.base * this._view.s / g.fh - 1) * 50);
+      this._view.x = Math.max(-mx, Math.min(mx, this._view.x));
+      this._view.y = Math.max(-my, Math.min(my, this._view.y));
+    }
+
+    _applyView() {
+      const g = this._geom();
+      const fit = this.getAttribute('fit') || 'cover';
+      if (fit !== 'cover' || !g) {
+        // Non-cover, or dimensions not known yet (before img load).
+        this._img.style.width = '100%';
+        this._img.style.height = '100%';
+        this._img.style.left = '50%';
+        this._img.style.top = '50%';
+        this._img.style.objectFit = fit;
+        this._img.style.objectPosition = this.getAttribute('position') || '50% 50%';
+        return;
+      }
+      // Cover baseline: img fills the frame on its tighter axis at s=1, so
+      // pan works immediately on the overflowing axis without zooming first.
+      // Width/height and left/top are all frame-% — depends only on the
+      // frame aspect ratio, so a responsive resize keeps the same crop. The
+      // spill layer mirrors the same box so its corners = image corners.
+      const k = g.base * this._view.s;
+      const w = (g.iw * k / g.fw * 100) + '%';
+      const h = (g.ih * k / g.fh * 100) + '%';
+      const l = (50 + this._view.x) + '%';
+      const t = (50 + this._view.y) + '%';
+      this._img.style.width = w; this._img.style.height = h;
+      this._img.style.left = l; this._img.style.top = t;
+      this._img.style.objectFit = '';
+      this._spill.style.width = w; this._spill.style.height = h;
+      this._spill.style.left = l; this._spill.style.top = t;
+    }
+
+    _commitView() {
+      const v = { s: this._view.s, x: this._view.x, y: this._view.y };
+      if (this._userUrl) v.u = this._userUrl;
+      // Framing-only (no u) persists too so an author-src slot remembers its
+      // crop; clearing the sidecar still falls through to src=.
+      if (this.id) setSlot(this.id, v);
+      else { this._local = v; }
+    }
+
+    _render() {
+      // Shape / mask. Presets use border-radius so the dashed ring can
+      // follow the rounded outline; clip-path is only applied for an
+      // explicit `mask` (the ring is hidden there since a rectangle
+      // dashed border chopped by an arbitrary polygon looks broken).
+      const mask = this.getAttribute('mask');
+      const shape = (this.getAttribute('shape') || 'rounded').toLowerCase();
+      let radius = '';
+      if (shape === 'circle') radius = '50%';
+      else if (shape === 'pill') radius = '9999px';
+      else if (shape === 'rounded') {
+        const n = parseFloat(this.getAttribute('radius'));
+        radius = (Number.isFinite(n) ? n : 12) + 'px';
+      }
+      this._frame.style.borderRadius = mask ? '' : radius;
+      this._frame.style.clipPath = mask || '';
+      this._ring.style.borderRadius = mask ? '' : radius;
+      this._ring.style.display = mask ? 'none' : '';
+
+      // Controls and reframe entry gate on this so share links stay read-only.
+      const editable = !!(window.omelette && window.omelette.writeFile);
+      this.toggleAttribute('data-editable', editable);
+      this._sub.style.display = editable ? '' : 'none';
+
+      // Content. The sidecar is also writable by the agent's write_file
+      // tool, so its value isn't guaranteed canvas-originated — only accept
+      // data:image/ URLs from it. The `src` attribute is author-controlled
+      // (Claude wrote it into the HTML) so it passes through unchanged.
+      let stored = this.id ? getSlot(this.id) : this._local;
+      if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
+      const srcAttr = this.getAttribute('src') || '';
+      this._userUrl = (stored && stored.u) || null;
+      const url = this._userUrl || srcAttr;
+      // Don't clobber an in-flight reframe with a store-triggered re-render.
+      if (!this.hasAttribute('data-reframe')) {
+        this._view = {
+          s: stored && Number.isFinite(stored.s) ? clampS(stored.s) : 1,
+          x: stored && Number.isFinite(stored.x) ? stored.x : 0,
+          y: stored && Number.isFinite(stored.y) ? stored.y : 0,
+        };
+      }
+      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image';
+      // Toggle via style.display — the [hidden] attribute alone loses to
+      // the display:flex / display:block rules in the stylesheet above.
+      if (url) {
+        if (this._img.getAttribute('src') !== url) {
+          this._img.src = url;
+          this._ghost.src = url;
+        }
+        this._img.style.display = 'block';
+        this._empty.style.display = 'none';
+        this.setAttribute('data-filled', '');
+        this._clampView();
+        this._applyView();
+      } else {
+        this._img.style.display = 'none';
+        this._img.removeAttribute('src');
+        this._ghost.removeAttribute('src');
+        this._empty.style.display = 'flex';
+        this.removeAttribute('data-filled');
+      }
+    }
+  }
+
+  if (!customElements.get('image-slot')) {
+    customElements.define('image-slot', ImageSlot);
+  }
+})();
+
+  </script>
+
+  <script type="text/babel" data-presets="react">
+/* global React, ReactDOM */
+const { useState, useEffect, useRef, useMemo } = React;
+
+/* =========================================================
+   Decorative SVG: AI node constellation
+   ========================================================= */
+function NodeNet({ count = 26, color = "#EEF4ED", accent = "#D62828", density = 1, animated = true }) {
+  // Deterministic pseudo-random nodes
+  const nodes = useMemo(() => {
+    const seed = 7;
+    const arr = [];
+    let s = seed;
+    const rand = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    for (let i = 0; i < count; i++) {
+      arr.push({
+        x: rand() * 100,
+        y: rand() * 100,
+        r: 0.6 + rand() * 1.4,
+        a: 0.3 + rand() * 0.6,
+        accent: rand() > 0.85,
+        d: 2 + rand() * 4,
+      });
+    }
+    return arr;
+  }, [count]);
+
+  // Build a sparse network: each node connects to nearest 1-2 others
+  const lines = useMemo(() => {
+    const out = [];
+    for (let i = 0; i < nodes.length; i++) {
+      const dists = nodes.map((n, j) => ({
+        j,
+        d: Math.hypot(n.x - nodes[i].x, n.y - nodes[i].y),
+      })).filter(o => o.j !== i).sort((a, b) => a.d - b.d);
+      const k = Math.min(2, dists.length);
+      for (let q = 0; q < k; q++) {
+        if (dists[q].d < 28 * density) {
+          out.push({ a: i, b: dists[q].j, op: 1 - dists[q].d / 35 });
+        }
+      }
+    }
+    return out;
+  }, [nodes, density]);
+
+  return (
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ width: "100%", height: "100%", display: "block" }} aria-hidden="true">
+      <g stroke={color} strokeWidth="0.12" fill="none" style={{ opacity: 0.6 }}>
+        {lines.map((l, i) => (
+          <line key={i}
+                x1={nodes[l.a].x} y1={nodes[l.a].y}
+                x2={nodes[l.b].x} y2={nodes[l.b].y}
+                opacity={Math.max(0.15, l.op)} />
+        ))}
+      </g>
+      <g>
+        {nodes.map((n, i) => (
+          <circle key={i} cx={n.x} cy={n.y} r={n.r * 0.35}
+                  fill={n.accent ? accent : color}
+                  opacity={n.a}>
+            {animated && i % 4 === 0 && (
+              <animate attributeName="opacity"
+                       values={`${n.a};${n.a * 0.3};${n.a}`}
+                       dur={`${n.d}s`}
+                       repeatCount="indefinite" />
+            )}
+          </circle>
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+/* =========================================================
+   useReveal — intersection observer
+   ========================================================= */
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
+/* =========================================================
+   Sticky Nav
+   ========================================================= */
+function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <header className={"nav" + (scrolled ? " is-scrolled" : "")}>
+      <div className="container nav__inner">
+        <a href="#top" className="brand" aria-label="LVAC AI Summit home">
+          <span className="brand__seal">LVAC</span>
+          <span className="brand__txt">
+            Lansing AI Summit
+            <span className="brand__sub">& Workforce Forum · 2026</span>
+          </span>
+        </a>
+        <nav className="nav__links" aria-label="Primary">
+          <a href="#about">Welcome</a>
+          <a href="#agenda">Agenda</a>
+          <a href="#audiences">Who</a>
+          <a href="#partners">Partners</a>
+          <a href="#faq">FAQ</a>
+          <a href="#register" className="nav__cta">Register →</a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+function Hero() {
+  return (
+    <section className="hero" id="top">
+      <div className="container">
+        <div className="hero__meta">
+          <div className="hero__meta-item">Edition <strong>I · 2026</strong></div>
+          <div className="hero__meta-item">Filed from <strong>Lansing, Michigan</strong></div>
+          <div className="hero__meta-item">Status <strong style={{color: "var(--red)"}}>● Open Registration</strong></div>
+        </div>
+
+        <div className="hero__title">
+          <h1>
+            Lansing <span className="accent it">AI</span> Summit
+            <br />
+            <span className="amp">&amp;</span> Workforce Forum.
+          </h1>
+        </div>
+
+        <div className="hero__lower">
+          <div>
+            <div className="eyebrow" style={{marginBottom: 18}}><span className="dot"></span>A One-Day Hybrid Convening</div>
+            <p className="hero__lede">
+              A one-day hybrid convening for students, veterans, small business owners,
+              and employers <span className="it">around the future of AI-powered work</span> in the
+              Great Lakes region.
+            </p>
+            <div className="hero__cta-row">
+              <a href="#register" className="btn btn--lg">
+                Reserve your seat <span className="arrow">→</span>
+              </a>
+              <a href="#agenda" className="btn btn--ghost btn--lg">
+                Read the agenda
+              </a>
+            </div>
+          </div>
+
+          <div className="hero__media reveal">
+            <span className="hero__media-tag"><span className="dot"></span>Peckham, Inc. · Lansing, MI</span>
+            <image-slot
+              id="hero-photo"
+              shape="rect"
+              placeholder="Drop a Lansing / community photo here"
+            ></image-slot>
+            <div className="hero__nodes">
+              <NodeNet count={32} color="#EEF4ED" accent="#D62828" density={1.1} />
+            </div>
+          </div>
+        </div>
+
+        <div className="hero__strip">
+          <div className="hero__strip-item">
+            <span className="k">Date</span>
+            <span className="v">TBD <span className="small">/ Save the Date</span></span>
+          </div>
+          <div className="hero__strip-item">
+            <span className="k">Hours</span>
+            <span className="v">8:00 — 15:00</span>
+          </div>
+          <div className="hero__strip-item">
+            <span className="k">Format</span>
+            <span className="v">Hybrid<span className="small">in-person + virtual</span></span>
+          </div>
+          <div className="hero__strip-item">
+            <span className="k">Admission</span>
+            <span className="v">Free<span className="small">community</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   About
+   ========================================================= */
+function About() {
+  return (
+    <section className="section about" id="about">
+      <div className="container about__inner">
+        <div className="about__visual reveal">
+          <div className="about__visual-net">
+            <NodeNet count={28} color="#EEF4ED" accent="#D62828" density={1.0} />
+          </div>
+          <div className="about__quote">
+            <span className="mark">“</span>
+            AI will not replace workers.
+            <br />
+            <span className="it" style={{color:"var(--slate)"}}>Workers with AI</span> will replace those without.
+          </div>
+        </div>
+        <div className="about__copy reveal">
+          <div className="eyebrow" style={{marginBottom: 20}}><span className="dot"></span>About the Summit</div>
+          <h2>AI is reshaping work. <span className="it">Be ready.</span></h2>
+          <p className="lead">
+            The Lansing AI Summit brings together community leaders, employers, educators,
+            and workforce professionals to explore how artificial intelligence is transforming
+            hiring, training, and economic opportunity.
+          </p>
+          <p>
+            One focused day. Four audience tracks. A practical lens on how Michigan can
+            lead — not follow — the next chapter of work.
+          </p>
+          <a href="#register" className="btn">Reserve your spot <span className="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   Why Attend
+   ========================================================= */
+function Why() {
+  const items = [
+    { n: "01", h: "Practical AI Knowledge", p: "Learn what AI actually means for your career, classroom, or business — without the jargon." },
+    { n: "02", h: "Community Connections",  p: "Meet employers, educators, and peers shaping Michigan's AI-ready workforce in one room." },
+    { n: "03", h: "Clear Next Steps",       p: "Leave with concrete tools, training paths, and hiring strategies you can put to work on Monday." },
+  ];
+  return (
+    <section className="section why" id="why">
+      <div className="container">
+        <div className="sec-head">
+          <div className="sec-head__label eyebrow"><span className="dot"></span>Why Attend</div>
+          <div className="sec-head__body">
+            <h2>What you'll walk away with.</h2>
+            <p>A day designed to deliver real, actionable value — not just talk.</p>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="why__grid reveal reveal--stagger">
+          {items.map(it => (
+            <div className="why__card" key={it.n}>
+              <div className="num">{it.n}<span style={{display:"none"}}></span></div>
+              <h3>{it.h}</h3>
+              <p>{it.p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   Audiences
+   ========================================================= */
+function Audiences({ onPickTrack }) {
+  const items = [
+    { k: "STU", track: "student",  h: "Students",             p: "High school and college students exploring AI-ready careers and skills.", pill: "Student Track" },
+    { k: "VET", track: "veteran",  h: "Veterans",             p: "Service members translating military experience into civilian AI-ready roles.", pill: "Veteran Track" },
+    { k: "SMB", track: "business", h: "Small Business Owners",p: "Entrepreneurs learning AI tools to compete and grow in today's economy.", pill: "Business Track" },
+    { k: "EMP", track: "business", h: "Employers",            p: "HR professionals and hiring managers building AI-integrated workforce strategies.", pill: "Business Track" },
+  ];
+  return (
+    <section className="section aud" id="audiences">
+      <div className="container">
+        <div className="sec-head">
+          <div className="sec-head__label eyebrow"><span className="dot"></span>Who Should Attend</div>
+          <div className="sec-head__body">
+            <h2>Built for the whole community.</h2>
+            <p>Whether you're entering the workforce, rebuilding a career, growing a business, or hiring talent — there's a track designed for you.</p>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="aud__grid reveal reveal--stagger">
+          {items.map(it => (
+            <div className="aud__card" key={it.h}
+                 onClick={() => onPickTrack && onPickTrack(it.track)}
+                 style={{cursor: "pointer"}}
+                 title={"Filter agenda → " + it.pill}>
+              <div className="icon">{it.k}</div>
+              <h3>{it.h}</h3>
+              <p>{it.p}</p>
+              <div className="track-pill">→ {it.pill}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   Agenda
+   ========================================================= */
+const AGENDA = [
+  { time: "8:00 AM",      sub: "Doors open",   h: "Registration & Welcome Networking", p: "Doors open, coffee, and early connection with attendees and exhibitors.", tag: "Networking", tracks: ["all"] },
+  { time: "9:00 AM",      sub: "Main stage",   h: "Opening Keynote: AI and the Future of Work in Michigan", p: "Setting the stage — what AI means for workers, businesses, and our region.", tag: "Keynote", tracks: ["all"] },
+  { time: "10:10–11:00",  sub: "Concurrent",   h: "Morning Sessions — Choose Your Track", p: "Three concurrent breakouts. Pick the one that fits where you are.", tag: "Breakouts", tracks: ["student","veteran","business"],
+    sessions: [
+      { track: "student",  label: "Student Track",  h: "AI Careers & Skills for the Next Generation" },
+      { track: "veteran",  label: "Veteran Track",  h: "Translating Military Skills into AI-Ready Roles" },
+      { track: "business", label: "Business Track", h: "AI Tools for Growth, Hiring & Operations" },
+    ] },
+  { time: "11:30 — 12:30",sub: "Resource Fair",h: "Lunch & Resource Fair", p: "Connect with training programs, community organizations, and employers over lunch.", tag: "Lunch Break", tracks: ["all"] },
+  { time: "1:10 — 2:30",  sub: "Main stage",   h: "Panel Discussion & Closing: Employers Leading with AI", p: "Regional employers and leaders share how they're integrating AI — followed by closing remarks and community commitments for action.", tag: "Panel & Closing", tracks: ["all"] },
+  { time: "2:30 — 3:00",  sub: "Lobby",        h: "Closing Networking Reception", p: "Build lasting connections. Event concludes at 3:00 PM.", tag: "Networking", tracks: ["all"] },
+];
+
+function Agenda({ filter, setFilter }) {
+  const tracks = [
+    { id: "all",      label: "All Sessions" },
+    { id: "student",  label: "Student" },
+    { id: "veteran",  label: "Veteran" },
+    { id: "business", label: "Business" },
+  ];
+
+  return (
+    <section className="section agenda" id="agenda">
+      <div className="container">
+        <div className="sec-head">
+          <div className="sec-head__label eyebrow"><span className="dot"></span>Day at a Glance</div>
+          <div className="sec-head__body">
+            <h2>Event Agenda <span className="it" style={{color:"var(--ink-faint)"}}>· Draft</span></h2>
+            <p>A focused day of learning, connection, and actionable insight. Final schedule forthcoming.</p>
+          </div>
+        </div>
+
+        <div className="agenda__filter">
+          <span className="agenda__filter-label">Filter by track</span>
+          {tracks.map(t => (
+            <button key={t.id}
+              className={"chip" + (filter === t.id ? " is-active" : "")}
+              onClick={() => setFilter(t.id)}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="agenda__list">
+          {AGENDA.map((row, i) => {
+            const isMatch = filter === "all"
+              || row.tracks.includes("all")
+              || row.tracks.includes(filter);
+            const isHighlight = filter !== "all" && row.tracks.includes(filter);
+            return (
+              <div key={i} className={"agenda__item reveal" + (!isMatch ? " is-dimmed" : "")}>
+                <div className="agenda__time">
+                  {row.time}
+                  <span className="sub">{row.sub}</span>
+                </div>
+                <div className="agenda__body">
+                  <h3>{row.h}</h3>
+                  <p>{row.p}</p>
+                  {row.sessions && (
+                    <div className="agenda__sessions">
+                      {row.sessions.map((s, j) => {
+                        const dim = filter !== "all" && filter !== s.track;
+                        return (
+                          <div key={j} className="agenda__session"
+                               data-track={s.track}
+                               style={{opacity: dim ? 0.3 : 1, transition: "opacity .3s"}}>
+                            <div className="label">{s.label}</div>
+                            <h4>{s.h}</h4>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+                <div className="agenda__tag">{row.tag}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   Partners
+   ========================================================= */
+function Partners() {
+  const cats = [
+    { eyebrow: "Academic", h: "Universities & Schools", logos: ["MSU","LCC","Davenport","K–12 Districts"] },
+    { eyebrow: "Government & City", h: "Public Sector", logos: ["City of Lansing","Michigan Works!","Ingham Co.","LEAP"] },
+    { eyebrow: "Veteran Orgs", h: "Service Networks", logos: ["MVAA","Disabled Vets","Mich. Vet Coalition"] },
+    { eyebrow: "Community Nonprofits", h: "Mission Partners", logos: ["United Way","Capital Area MI","NAACP Lansing","Lansing Promise"] },
+  ];
+  return (
+    <section className="section partners" id="partners">
+      <div className="container">
+        <div className="sec-head">
+          <div className="sec-head__label eyebrow"><span className="dot"></span>Our Partners</div>
+          <div className="sec-head__body">
+            <h2>Rooted in the community.</h2>
+            <p>The Lansing AI Summit is made possible through the leadership of mission-aligned organizations committed to equitable workforce development.</p>
+          </div>
+        </div>
+
+        <div className="partners__host reveal">
+          <div className="partners__host-logo">Peckham</div>
+          <div className="partners__host-body">
+            <div className="eyebrow" style={{marginBottom: 12, color:"var(--red)"}}><span className="dot"></span>Anchor & Host Partner</div>
+            <h3>Peckham, Inc.</h3>
+            <p>A nonprofit vocational rehabilitation organization providing job training,
+              employment, and support services to individuals with barriers to employment — and the
+              ideal host for this community-centered event.</p>
+          </div>
+        </div>
+
+        <div className="partners__cats reveal reveal--stagger">
+          {cats.map(c => (
+            <div className="partners__cat" key={c.h}>
+              <div className="eyebrow"><span className="dot"></span>{c.eyebrow}</div>
+              <h3>{c.h}</h3>
+              <div className="logos">
+                {c.logos.map(l => <div className="partners__logo" key={l}>{l}</div>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   Register
+   ========================================================= */
+function Register() {
+  return (
+    <section className="section register" id="register">
+      <div className="register__net">
+        <NodeNet count={40} color="#EEF4ED" accent="#D62828" density={1.0} />
+      </div>
+      <div className="container">
+        <div className="sec-head">
+          <div className="sec-head__label eyebrow"><span className="dot"></span>Register</div>
+          <div className="sec-head__body">
+            <h2>Save your seat.</h2>
+            <p>Free and open to the community — in-person and virtual options available. Fill out the form below to confirm your spot.</p>
+          </div>
+        </div>
+
+        <div className="register__inner">
+          <div className="register__side reveal">
+            <h3>What to expect after registering</h3>
+            <p>You'll get a confirmation email within 24 hours, with venue details, parking, and the live virtual link closer to the date.</p>
+            <ul className="register__bullets">
+              <li>A confirmation + calendar invite (in-person or virtual).</li>
+              <li>A pre-event reading list — short, practical, no jargon.</li>
+              <li>Track recommendations based on your role.</li>
+              <li>Day-of logistics: venue map, parking, livestream URL.</li>
+            </ul>
+          </div>
+
+          <div className="register__form-shell reveal">
+            <div className="register__form-head">
+              <span className="status"><span className="dot"></span>Live · Accepting RSVPs</span>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfu35tfZqywYZIbR6vfgwSqnx0fD5w_6_HzwGQn66U2dxU7Ow/viewform" target="_blank" rel="noopener">
+                Open in new tab →
+              </a>
+            </div>
+            <div className="register__form">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfu35tfZqywYZIbR6vfgwSqnx0fD5w_6_HzwGQn66U2dxU7Ow/viewform?embedded=true"
+                title="Lansing AI Summit Registration"
+                loading="lazy">
+                Loading…
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+const FAQS = [
+  { q: "How much does it cost to attend?",
+    a: "The Lansing AI Summit is completely free and open to the community. We're committed to making this event accessible to anyone interested in the future of AI-powered work." },
+  { q: "Is the event in-person, virtual, or both?",
+    a: "Both. The summit is a hybrid event — join us in person at Peckham, Inc. in Lansing, MI, or tune in virtually from anywhere. Choose your format when you register." },
+  { q: "Do I need any AI experience to attend?",
+    a: "Not at all. The summit is built for the whole community — from curious newcomers to seasoned professionals. Every track is designed to meet you where you are." },
+  { q: "Will lunch be provided?",
+    a: "Yes — in-person attendees enjoy a complimentary lunch as part of the Resource Fair, where you can connect with training programs, community organizations, and employers." },
+  { q: "Can my organization become a partner or sponsor?",
+    aHtml: 'Absolutely. We welcome mission-aligned organizations committed to equitable workforce development. Reach out at <a href="mailto:mr.jamesbender@gmail.com">mr.jamesbender@gmail.com</a> to discuss partnership opportunities.' },
+  { q: "Will sessions be recorded?",
+    a: "Keynote and panel sessions will be recorded and shared with registered attendees after the event. Concurrent track sessions are in-person experiences designed for live engagement." },
+];
+
+function Faq() {
+  const [open, setOpen] = useState(0);
+  return (
+    <section className="section faq" id="faq">
+      <div className="container">
+        <div className="faq__inner">
+          <div className="faq__intro reveal">
+            <div className="eyebrow" style={{marginBottom: 20}}><span className="dot"></span>FAQ</div>
+            <h2>Common <span className="it">questions.</span></h2>
+            <p>Everything you need to know before the summit.</p>
+          </div>
+          <div className="faq__list reveal">
+            {FAQS.map((f, i) => (
+              <div key={i} className={"faq__item" + (open === i ? " is-open" : "")}>
+                <button className="faq__q" onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i}>
+                  <span>{f.q}</span>
+                  <span className="faq__icon" aria-hidden="true">+</span>
+                </button>
+                <div className="faq__a">
+                  {f.aHtml
+                    ? <p dangerouslySetInnerHTML={{ __html: f.aHtml }} />
+                    : <p>{f.a}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================
+   Closing CTA + Footer
+   ========================================================= */
+function ClosingCTA() {
+  return (
+    <section className="cta">
+      <div className="cta__net">
+        <NodeNet count={30} color="#0B2545" accent="#D62828" density={1.1} />
+      </div>
+      <div className="cta__inner reveal">
+        <h2>Ready to shape <br/>the <span className="it">future of work?</span></h2>
+        <p>Reserve your spot at the Lansing AI Summit. Free and open to the community — in-person and virtual options available.</p>
+        <div className="cta__row">
+          <a href="#register" className="btn btn--lg">Register now <span className="arrow">→</span></a>
+          <a href="#agenda" className="btn btn--ghost btn--lg">View the agenda</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer__top">
+          <div className="footer__brand">
+            <h3>Lansing AI Summit & Workforce Forum</h3>
+            <p>A community-centered convening on the future of AI-powered work, hosted by Peckham, Inc. in Lansing, Michigan.</p>
+          </div>
+          <div className="footer__col">
+            <h4>Event</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#agenda">Agenda</a></li>
+              <li><a href="#audiences">Who</a></li>
+              <li><a href="#partners">Partners</a></li>
+            </ul>
+          </div>
+          <div className="footer__col">
+            <h4>Take Part</h4>
+            <ul>
+              <li><a href="#register">Register</a></li>
+              <li><a href="mailto:mr.jamesbender@gmail.com">Partner with us</a></li>
+              <li><a href="mailto:mr.jamesbender@gmail.com">Volunteer</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div className="footer__col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:mr.jamesbender@gmail.com">mr.jamesbender@gmail.com</a></li>
+              <li><a href="tel:5178253737">517 · 825 · 3737</a></li>
+              <li><a href="https://linkedin.com/in/jbender24" target="_blank" rel="noopener">linkedin.com/in/jbender24</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer__values">
+          <span>Mission</span>
+          <span>Scope</span>
+          <span>Insight</span>
+          <span>Connection</span>
+          <span>Service</span>
+          <span>Development</span>
+        </div>
+
+        <div className="footer__bottom">
+          <span>© 2026 MissionScope Solutions, LLC</span>
+          <span>Hosted by Peckham, Inc.</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* =========================================================
+   App
+   ========================================================= */
+function App() {
+  const [filter, setFilter] = useState("all");
+  useReveal();
+
+  const handlePickTrack = (track) => {
+    setFilter(track);
+    // scroll to agenda
+    const el = document.getElementById("agenda");
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 60;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <About />
+      <Why />
+      <Audiences onPickTrack={handlePickTrack} />
+      <Agenda filter={filter} setFilter={setFilter} />
+      <Partners />
+      <Register />
+      <Faq />
+      <ClosingCTA />
+      <Footer />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+  </script>
 </body>
 </html>
