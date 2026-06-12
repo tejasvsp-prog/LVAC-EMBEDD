@@ -251,21 +251,58 @@ section { position: relative; }
   transition: width .25s ease;
 }
 .nav__links a:hover::before { width: calc(100% - 28px); }
-.nav__cta {
-  margin-left: 16px;
+/* Register CTA — high specificity so it beats `.nav__links a` color */
+.nav__links a.nav__cta {
+  margin-left: 18px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 16px;
+  gap: 9px;
+  padding: 11px 20px;
   background: var(--ink);
   color: var(--paper);
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: background .2s;
+  border: 1px solid var(--ink);
+  box-shadow: 0 4px 14px rgba(11,37,69,0.18);
+  transition: background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  position: relative;
+  overflow: hidden;
 }
-.nav__cta:hover { background: var(--red); }
+/* kill the link underline pseudo on the button */
+.nav__links a.nav__cta::before { content: none; }
+/* sheen sweep on hover */
+.nav__links a.nav__cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-18deg);
+  transition: left .5s ease;
+}
+.nav__links a.nav__cta:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(214,40,40,0.30);
+}
+.nav__links a.nav__cta:hover::after { left: 130%; }
+.nav__cta .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(201,162,74,0.6);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+.nav__links a.nav__cta:hover .dot { background: #fff; }
+.nav__cta .arrow { transition: transform .22s ease; }
+.nav__links a.nav__cta:hover .arrow { transform: translateX(3px); }
 
 /* hamburger toggle (hidden on desktop) */
 .nav__toggle {
@@ -1948,7 +1985,11 @@ function Nav() {
     href: "#register",
     className: "nav__cta",
     onClick: () => setOpen(false)
-  }, "Register \u2192")), /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dot"
+  }), "Register", /*#__PURE__*/React.createElement("span", {
+    className: "arrow"
+  }, "\u2192"))), /*#__PURE__*/React.createElement("button", {
     className: "nav__toggle",
     "aria-label": "Toggle menu",
     "aria-expanded": open,

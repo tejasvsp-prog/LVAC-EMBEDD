@@ -145,7 +145,9 @@ function Nav() {
         </a>
         <nav className="nav__links" aria-label="Primary">
           {links.map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>)}
-          <a href="#register" className="nav__cta" onClick={() => setOpen(false)}>Register →</a>
+          <a href="#register" className="nav__cta" onClick={() => setOpen(false)}>
+            <span className="dot"></span>Register<span className="arrow">→</span>
+          </a>
         </nav>
         <button className="nav__toggle" aria-label="Toggle menu" aria-expanded={open}
                 onClick={() => setOpen(v => !v)}>
