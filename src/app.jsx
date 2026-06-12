@@ -2,19 +2,26 @@
 const { useState, useEffect, useRef, useMemo } = React;
 
 /* =========================================================
-   LAVC Logo — flag-pattern V with curved school text.
-   Two variants: Mark (V only) and Full (curved text + star + V).
+   LAVC Logo — the official L.A.V.C. mark (raster image).
+   The bundled single-file build injects window.LAVC_LOGO_SRC as a
+   base64 data URI; when hosting the src/ files directly it falls back
+   to the assets/ path. Both LogoMark and LogoFull render the same art.
    ========================================================= */
-const LOGO_NAVY = "#1e3a6b";
-const LOGO_RED  = "#c8202c";
-const LOGO_CREAM = "#f7f2e3";
+const LOGO_SRC =
+  (typeof window !== "undefined" && window.LAVC_LOGO_SRC) || "assets/lavc-logo.png";
 
-function starPath(cx, cy, r) {
-  const pts = [
-    [0,-1],[0.225,-0.31],[0.951,-0.31],[0.363,0.118],[0.588,0.809],
-    [0,0.382],[-0.588,0.809],[-0.363,0.118],[-0.951,-0.31],[-0.225,-0.31]
-  ];
-  return pts.map(([x,y]) => `${cx + x*r},${cy + y*r}`).join(" ");
+function LogoMark({ size = 40, title = "L.A.V.C." }) {
+  return (
+    <img className="lavc-logo lavc-logo--mark" src={LOGO_SRC} alt={title}
+         style={{ height: size, width: "auto", display: "block" }} />
+  );
+}
+
+function LogoFull({ width = 150, title = "L.A.V.C." }) {
+  return (
+    <img className="lavc-logo lavc-logo--full" src={LOGO_SRC} alt={title}
+         style={{ width, height: "auto", display: "block" }} />
+  );
 }
 
 function LogoMark({ size = 40, title = "L.A.V.C." }) {

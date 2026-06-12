@@ -1012,13 +1012,15 @@ section { position: relative; }
 @media (max-width: 520px) { .footer__top { grid-template-columns: 1fr; } }
 .footer__logo-card {
   display: inline-flex;
-  background: var(--paper);
+  background: #fff;
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 14px 16px;
   margin-bottom: 22px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
-.footer__logo-card svg { display: block; }
+.footer__logo-card svg,
+.footer__logo-card img { display: block; }
+.brand__seal--logo img { object-fit: contain; }
 .footer__brand h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 12px; max-width: 18ch; }
 .footer__brand p { color: rgba(238,244,237,0.65); max-width: 36ch; }
 .footer__col h4 {
