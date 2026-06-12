@@ -254,8 +254,64 @@ section { position: relative; }
   transition: background .2s;
 }
 .nav__cta:hover { background: var(--red); }
+
+/* hamburger toggle (hidden on desktop) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px; height: 42px;
+  padding: 0 9px;
+  background: transparent;
+  border: 1px solid var(--line-mid);
+  border-radius: 8px;
+}
+.nav__toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav.is-open .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav.is-open .nav__toggle span:nth-child(2) { opacity: 0; }
+.nav.is-open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* mobile drawer */
+.nav__drawer {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px var(--gutter) 20px;
+  border-top: var(--rule);
+  background: rgba(238, 244, 237, 0.97);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+.nav__drawer a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 14px 4px;
+  border-bottom: var(--rule);
+}
+.nav__drawer a:last-child { border-bottom: none; }
+.nav__drawer-cta {
+  margin-top: 12px;
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  text-align: center;
+  border-radius: 6px;
+  border-bottom: none !important;
+}
+
 @media (max-width: 820px) {
-  .nav__links a:not(.nav__cta) { display: none; }
+  .nav__links { display: none; }
+  .nav__toggle { display: flex; }
+  .nav.is-open .nav__drawer { display: flex; }
 }
 
 /* =========================================================
@@ -954,6 +1010,15 @@ section { position: relative; }
 }
 @media (max-width: 800px) { .footer__top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer__top { grid-template-columns: 1fr; } }
+.footer__logo-card {
+  display: inline-flex;
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.footer__logo-card svg { display: block; }
 .footer__brand h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 12px; max-width: 18ch; }
 .footer__brand p { color: rgba(238,244,237,0.65); max-width: 36ch; }
 .footer__col h4 {

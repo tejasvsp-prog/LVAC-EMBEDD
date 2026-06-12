@@ -17,85 +17,85 @@ function starPath(cx, cy, r) {
   return pts.map(([x,y]) => `${cx + x*r},${cy + y*r}`).join(" ");
 }
 
-function LogoMark({ size = 36, title = "L.A.V.C." }) {
+function LogoMark({ size = 40, title = "L.A.V.C." }) {
+  // V-only mark: navy star-field left arm, red diagonal-stripe right arm,
+  // black outline, blue crown star. viewBox 0 0 100 104.
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={title}>
+    <svg width={size} height={size * 1.04} viewBox="0 0 100 104" role="img" aria-label={title}>
       <defs>
-        <clipPath id="lm-left"><polygon points="10,18 50,18 50,90"/></clipPath>
-        <clipPath id="lm-right"><polygon points="50,18 90,18 50,90"/></clipPath>
+        <pattern id="lm-stripes" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-32)">
+          <rect width="10" height="10" fill={LOGO_CREAM}/>
+          <rect width="5" height="10" fill={LOGO_RED}/>
+        </pattern>
       </defs>
-      <polygon points="10,18 50,18 50,90" fill={LOGO_NAVY}/>
-      <g fill="#fff" clipPath="url(#lm-left)">
-        <polygon points={starPath(20, 27, 2.2)}/>
-        <polygon points={starPath(30, 27, 2.2)}/>
-        <polygon points={starPath(40, 27, 2.2)}/>
-        <polygon points={starPath(25, 38, 2.2)}/>
-        <polygon points={starPath(35, 38, 2.2)}/>
-        <polygon points={starPath(45, 38, 2.2)}/>
-        <polygon points={starPath(30, 49, 2.2)}/>
-        <polygon points={starPath(40, 49, 2.2)}/>
-        <polygon points={starPath(35, 60, 2.2)}/>
-        <polygon points={starPath(45, 60, 2.2)}/>
-        <polygon points={starPath(42, 71, 2.2)}/>
+      {/* crown star */}
+      <polygon points={starPath(50, 15, 11)} fill={LOGO_NAVY} stroke="#111" strokeWidth="1.2" strokeLinejoin="round"/>
+      {/* left arm — navy + white stars */}
+      <polygon points="11,30 33,30 50,66 50,92" fill={LOGO_NAVY}/>
+      <g fill="#fff">
+        <polygon points={starPath(21, 38, 2)}/>
+        <polygon points={starPath(30, 38, 2)}/>
+        <polygon points={starPath(25, 47, 2)}/>
+        <polygon points={starPath(34, 47, 2)}/>
+        <polygon points={starPath(30, 56, 2)}/>
+        <polygon points={starPath(39, 56, 2)}/>
+        <polygon points={starPath(35, 65, 2)}/>
+        <polygon points={starPath(44, 65, 2)}/>
+        <polygon points={starPath(41, 74, 2)}/>
+        <polygon points={starPath(46, 83, 2)}/>
       </g>
-      <polygon points="50,18 90,18 50,90" fill={LOGO_RED}/>
-      <g clipPath="url(#lm-right)" fill={LOGO_CREAM}>
-        <rect x="50" y="26" width="50" height="5"/>
-        <rect x="50" y="36" width="50" height="5"/>
-        <rect x="50" y="46" width="50" height="5"/>
-        <rect x="50" y="56" width="50" height="5"/>
-        <rect x="50" y="66" width="50" height="5"/>
-        <rect x="50" y="76" width="50" height="5"/>
-      </g>
+      {/* right arm — diagonal stripes */}
+      <polygon points="89,30 67,30 50,66 50,92" fill="url(#lm-stripes)"/>
+      {/* black outline + seam */}
+      <polygon points="11,30 33,30 50,66 67,30 89,30 50,92" fill="none" stroke="#111" strokeWidth="3" strokeLinejoin="round"/>
+      <line x1="50" y1="66" x2="50" y2="92" stroke="#111" strokeWidth="2.4"/>
     </svg>
   );
 }
 
-function LogoFull({ width = 140, title = "L.A.V.C." }) {
+function LogoFull({ width = 150, title = "L.A.V.C.", textColor = "#111" }) {
+  // Full lockup: arced L.A.V.C. text + crown star + flag V. viewBox 0 0 200 200.
   return (
     <svg width={width} viewBox="0 0 200 200" role="img" aria-label={title}>
       <defs>
-        <path id="lf-arc" d="M 30 70 Q 100 18 170 70" fill="none"/>
-        <clipPath id="lf-left"><polygon points="30,92 100,92 100,180"/></clipPath>
-        <clipPath id="lf-right"><polygon points="100,92 170,92 100,180"/></clipPath>
+        <path id="lf-arc" d="M 34 74 Q 100 20 166 74" fill="none"/>
+        <pattern id="lf-stripes" patternUnits="userSpaceOnUse" width="18" height="18" patternTransform="rotate(-32)">
+          <rect width="18" height="18" fill={LOGO_CREAM}/>
+          <rect width="9" height="18" fill={LOGO_RED}/>
+        </pattern>
       </defs>
-      <text fontFamily="Georgia, 'Source Serif 4', serif" fontWeight="900"
-            fontSize="32" fill="currentColor" letterSpacing="4">
+      {/* arced school text */}
+      <text fontFamily="Georgia, 'Times New Roman', serif" fontWeight="800"
+            fontSize="34" fill={textColor} letterSpacing="3">
         <textPath href="#lf-arc" startOffset="50%" textAnchor="middle">L.A.V.C.</textPath>
       </text>
-      <polygon points={starPath(100, 80, 11)} fill={LOGO_NAVY}/>
-      <polygon points="30,92 100,92 100,180" fill={LOGO_NAVY}/>
-      <g fill="#fff" clipPath="url(#lf-left)">
-        <polygon points={starPath(45, 102, 2.6)}/>
-        <polygon points={starPath(58, 102, 2.6)}/>
-        <polygon points={starPath(71, 102, 2.6)}/>
-        <polygon points={starPath(84, 102, 2.6)}/>
-        <polygon points={starPath(97, 102, 2.6)}/>
-        <polygon points={starPath(52, 114, 2.6)}/>
-        <polygon points={starPath(65, 114, 2.6)}/>
-        <polygon points={starPath(78, 114, 2.6)}/>
-        <polygon points={starPath(91, 114, 2.6)}/>
-        <polygon points={starPath(60, 126, 2.6)}/>
-        <polygon points={starPath(73, 126, 2.6)}/>
-        <polygon points={starPath(86, 126, 2.6)}/>
-        <polygon points={starPath(67, 138, 2.6)}/>
-        <polygon points={starPath(80, 138, 2.6)}/>
-        <polygon points={starPath(93, 138, 2.6)}/>
-        <polygon points={starPath(74, 150, 2.6)}/>
-        <polygon points={starPath(87, 150, 2.6)}/>
-        <polygon points={starPath(82, 162, 2.6)}/>
-        <polygon points={starPath(95, 162, 2.6)}/>
+      {/* crown star */}
+      <polygon points={starPath(100, 84, 15)} fill={LOGO_NAVY} stroke="#111" strokeWidth="1.6" strokeLinejoin="round"/>
+      {/* left arm — navy + white stars */}
+      <polygon points="34,104 66,104 100,176 100,186" fill={LOGO_NAVY}/>
+      <g fill="#fff">
+        <polygon points={starPath(46, 113, 2.7)}/>
+        <polygon points={starPath(58, 113, 2.7)}/>
+        <polygon points={starPath(70, 113, 2.7)}/>
+        <polygon points={starPath(52, 124, 2.7)}/>
+        <polygon points={starPath(64, 124, 2.7)}/>
+        <polygon points={starPath(76, 124, 2.7)}/>
+        <polygon points={starPath(58, 135, 2.7)}/>
+        <polygon points={starPath(70, 135, 2.7)}/>
+        <polygon points={starPath(82, 135, 2.7)}/>
+        <polygon points={starPath(64, 146, 2.7)}/>
+        <polygon points={starPath(76, 146, 2.7)}/>
+        <polygon points={starPath(88, 146, 2.7)}/>
+        <polygon points={starPath(70, 157, 2.7)}/>
+        <polygon points={starPath(82, 157, 2.7)}/>
+        <polygon points={starPath(78, 168, 2.7)}/>
+        <polygon points={starPath(90, 168, 2.7)}/>
       </g>
-      <polygon points="100,92 170,92 100,180" fill={LOGO_RED}/>
-      <g clipPath="url(#lf-right)" fill={LOGO_CREAM}>
-        <rect x="100" y="100" width="80" height="5"/>
-        <rect x="100" y="111" width="80" height="5"/>
-        <rect x="100" y="122" width="80" height="5"/>
-        <rect x="100" y="133" width="80" height="5"/>
-        <rect x="100" y="144" width="80" height="5"/>
-        <rect x="100" y="155" width="80" height="5"/>
-        <rect x="100" y="166" width="80" height="5"/>
-      </g>
+      {/* right arm — diagonal stripes */}
+      <polygon points="166,104 134,104 100,176 100,186" fill="url(#lf-stripes)"/>
+      {/* black outline + seam */}
+      <polygon points="34,104 66,104 100,176 134,104 166,104 100,186" fill="none" stroke="#111" strokeWidth="4.5" strokeLinejoin="round"/>
+      <line x1="100" y1="176" x2="100" y2="186" stroke="#111" strokeWidth="3.5"/>
     </svg>
   );
 }
@@ -196,15 +196,23 @@ function useReveal() {
    ========================================================= */
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  const links = [
+    { href: "#about", label: "Welcome" },
+    { href: "#agenda", label: "Agenda" },
+    { href: "#audiences", label: "Who" },
+    { href: "#partners", label: "Partners" },
+    { href: "#faq", label: "FAQ" },
+  ];
   return (
-    <header className={"nav" + (scrolled ? " is-scrolled" : "")}>
+    <header className={"nav" + (scrolled ? " is-scrolled" : "") + (open ? " is-open" : "")}>
       <div className="container nav__inner">
-        <a href="#top" className="brand" aria-label="LVAC AI Summit home">
+        <a href="#top" className="brand" aria-label="LVAC AI Summit home" onClick={() => setOpen(false)}>
           <span className="brand__seal brand__seal--logo"><LogoMark size={40} /></span>
           <span className="brand__txt">
             Lansing AI Summit
@@ -212,14 +220,18 @@ function Nav() {
           </span>
         </a>
         <nav className="nav__links" aria-label="Primary">
-          <a href="#about">Welcome</a>
-          <a href="#agenda">Agenda</a>
-          <a href="#audiences">Who</a>
-          <a href="#partners">Partners</a>
-          <a href="#faq">FAQ</a>
-          <a href="#register" className="nav__cta">Register →</a>
+          {links.map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>)}
+          <a href="#register" className="nav__cta" onClick={() => setOpen(false)}>Register →</a>
         </nav>
+        <button className="nav__toggle" aria-label="Toggle menu" aria-expanded={open}
+                onClick={() => setOpen(v => !v)}>
+          <span></span><span></span><span></span>
+        </button>
       </div>
+      <nav className={"nav__drawer" + (open ? " is-open" : "")} aria-label="Mobile">
+        {links.map(l => <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>)}
+        <a href="#register" className="nav__drawer-cta" onClick={() => setOpen(false)}>Register →</a>
+      </nav>
     </header>
   );
 }
@@ -678,8 +690,8 @@ function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
-            <div className="footer__logo" style={{color: "var(--paper)", marginBottom: 20}}>
-              <LogoFull width={120} />
+            <div className="footer__logo-card">
+              <LogoFull width={108} textColor="#0B2545" />
             </div>
             <h3>Lansing AI Summit & Workforce Forum</h3>
             <p>A community-centered convening on the future of AI-powered work, hosted by Peckham, Inc. in Lansing, Michigan.</p>
