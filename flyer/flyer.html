@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Snaggletooth Cat Rescue — Volunteer Flyer</title>
+<style>
+  @font-face{font-family:'Fredoka';font-weight:400;font-style:normal;src:url('assets/fonts/fredoka-latin-400-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Fredoka';font-weight:500;font-style:normal;src:url('assets/fonts/fredoka-latin-500-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Fredoka';font-weight:600;font-style:normal;src:url('assets/fonts/fredoka-latin-600-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Fredoka';font-weight:700;font-style:normal;src:url('assets/fonts/fredoka-latin-700-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Nunito';font-weight:400;font-style:normal;src:url('assets/fonts/nunito-latin-400-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Nunito';font-weight:600;font-style:normal;src:url('assets/fonts/nunito-latin-600-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Nunito';font-weight:700;font-style:normal;src:url('assets/fonts/nunito-latin-700-normal.woff2') format('woff2');font-display:block;}
+  @font-face{font-family:'Nunito';font-weight:800;font-style:normal;src:url('assets/fonts/nunito-latin-800-normal.woff2') format('woff2');font-display:block;}
+
+  :root{
+    --blush:#FFF5FA; --mint:#F1FBF6;
+    --pink:#F2709E; --pink-deep:#DE4F88; --pink-soft:#FBD7E6;
+    --green:#46B07A; --green-deep:#2E8E60; --green-soft:#CFEDDB;
+    --purple:#A24FD0; --purple-deep:#8A3CC0;
+    --ink:#41323F; --ink-soft:#6E5C6B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#d9d9e0;}
+  .page{
+    position:relative;width:816px;height:1056px;overflow:hidden;
+    font-family:'Nunito',sans-serif;color:var(--ink);
+    background:
+      radial-gradient(1100px 700px at 88% -8%, rgba(242,112,158,.18), transparent 60%),
+      radial-gradient(1000px 760px at 6% 108%, rgba(70,176,122,.20), transparent 60%),
+      linear-gradient(158deg, var(--blush) 0%, #FFFAFC 46%, var(--mint) 100%);
+  }
+  /* tiled paw pattern */
+  .paw-bg{position:absolute;inset:0;opacity:.5;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'><g fill='%23b98bbf' fill-opacity='0.13' transform='rotate(-18 60 60)'><ellipse cx='60' cy='78' rx='17' ry='14'/><ellipse cx='40' cy='52' rx='7' ry='9'/><ellipse cx='55' cy='42' rx='7' ry='10'/><ellipse cx='71' cy='42' rx='7' ry='10'/><ellipse cx='84' cy='53' rx='7' ry='9'/></g><g fill='%2386c79f' fill-opacity='0.13' transform='rotate(20 120 130)'><ellipse cx='122' cy='140' rx='13' ry='11'/><ellipse cx='107' cy='120' rx='5.5' ry='7'/><ellipse cx='118' cy='112' rx='5.5' ry='7.5'/><ellipse cx='131' cy='112' rx='5.5' ry='7.5'/><ellipse cx='141' cy='121' rx='5.5' ry='7'/></g></svg>");
+  }
+  /* large decorative corner paws */
+  .deco-paw{position:absolute;width:150px;height:150px;}
+  .deco-paw svg{width:100%;height:100%;display:block;}
+  .dp1{top:-26px;left:-22px;transform:rotate(-22deg);}
+  .dp2{bottom:118px;right:-30px;transform:rotate(28deg);}
+  .dp3{top:300px;left:-40px;transform:rotate(12deg);width:104px;height:104px;}
+
+  .frame{position:absolute;inset:20px;border-radius:34px;
+    border:3px solid rgba(162,79,208,.30);
+    box-shadow:0 0 0 10px rgba(255,255,255,.55) inset;}
+
+  .content{position:absolute;inset:0;padding:46px 58px 40px;display:flex;flex-direction:column;align-items:center;}
+
+  /* ---- logo lockup ---- */
+  .logo{display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .logo .mark{width:92px;height:84px;}
+  .logo .name{font-family:'Fredoka',sans-serif;font-weight:600;font-size:25px;letter-spacing:.12em;
+    color:var(--purple-deep);text-transform:uppercase;line-height:1;}
+  .logo .tagline{font-family:'Nunito';font-weight:700;font-size:11px;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--ink-soft);}
+
+  /* ---- eyebrow + headline ---- */
+  .eyebrow{margin-top:16px;display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(90deg,var(--pink),var(--pink-deep));color:#fff;
+    font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    padding:8px 18px;border-radius:999px;box-shadow:0 6px 16px rgba(222,79,136,.32);}
+  h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:62px;line-height:.95;
+    text-align:center;margin-top:14px;color:var(--ink);letter-spacing:.005em;}
+  h1 .pink{color:var(--pink-deep);}
+  h1 .grn{color:var(--green-deep);}
+  .subhead{margin-top:10px;font-size:18px;font-weight:700;color:var(--ink-soft);text-align:center;}
+  .subhead .heart{color:var(--pink-deep);}
+
+  /* ---- hero photo ---- */
+  .hero{position:relative;margin-top:16px;width:262px;height:262px;}
+  .ring{position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 210deg,var(--pink),var(--purple),var(--green),var(--pink));
+    padding:9px;box-shadow:0 16px 30px rgba(138,60,192,.22);}
+  .ring .inner{width:100%;height:100%;border-radius:50%;background:#fff;padding:6px;}
+  .photo{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
+    background:radial-gradient(circle at 50% 38%, #fff 0%, var(--pink-soft) 70%, var(--green-soft) 130%);
+    display:flex;align-items:center;justify-content:center;}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo .ph{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--purple);}
+  .photo .ph svg{width:120px;height:120px;opacity:.9;}
+  .photo .ph span{font-weight:800;font-size:12.5px;letter-spacing:.06em;color:var(--purple-deep);text-align:center;max-width:170px;}
+  .dashring{position:absolute;inset:-4px;border-radius:50%;border:3px dashed rgba(162,79,208,.45);}
+  /* badge on hero */
+  .badge{position:absolute;right:-6px;top:6px;width:78px;height:78px;border-radius:50%;
+    background:linear-gradient(135deg,var(--green),var(--green-deep));color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 8px 16px rgba(46,142,96,.35);border:3px solid #fff;transform:rotate(8deg);}
+  .badge b{font-family:'Fredoka';font-weight:700;font-size:18px;line-height:1;}
+  .badge small{font-size:8.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+
+  /* ---- intro copy ---- */
+  .intro{margin-top:18px;text-align:center;font-size:15.5px;line-height:1.5;color:var(--ink);
+    font-weight:600;max-width:600px;}
+  .intro b{color:var(--pink-deep);font-weight:800;}
+  .intro .g{color:var(--green-deep);font-weight:800;}
+
+  /* ---- chips row ---- */
+  .chips{margin-top:16px;display:flex;gap:12px;width:100%;justify-content:center;}
+  .chip{flex:1;max-width:198px;background:#fff;border-radius:18px;padding:13px 12px 12px;
+    text-align:center;box-shadow:0 8px 18px rgba(120,80,120,.10);border:1.5px solid rgba(162,79,208,.12);}
+  .chip .ic{width:34px;height:34px;margin:0 auto 7px;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;font-size:18px;}
+  .chip.p .ic{background:var(--pink-soft);}
+  .chip.g .ic{background:var(--green-soft);}
+  .chip.u .ic{background:#EFE0FA;}
+  .chip h3{font-family:'Fredoka';font-weight:600;font-size:15px;color:var(--ink);margin-bottom:2px;}
+  .chip p{font-size:11.5px;line-height:1.35;color:var(--ink-soft);font-weight:600;}
+
+  /* ---- QR sign-up card ---- */
+  .signup{margin-top:auto;width:100%;display:flex;align-items:center;gap:20px;
+    background:linear-gradient(120deg,#fff 60%,#FFF4F9 100%);
+    border-radius:24px;padding:18px 22px;border:2px solid rgba(242,112,158,.30);
+    box-shadow:0 14px 30px rgba(138,60,192,.16);position:relative;overflow:hidden;}
+  .signup::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;
+    background:linear-gradient(var(--pink),var(--purple),var(--green));}
+  .qrwrap{flex:0 0 auto;background:#fff;border-radius:16px;padding:10px;
+    box-shadow:0 6px 14px rgba(0,0,0,.10);border:1.5px solid var(--green-soft);}
+  .qrwrap img{width:124px;height:124px;display:block;}
+  .qrwrap .cap{text-align:center;font-weight:800;font-size:10px;letter-spacing:.05em;
+    color:var(--green-deep);margin-top:5px;text-transform:uppercase;}
+  .signup .txt{flex:1;}
+  .signup .txt .k{display:inline-block;background:var(--purple);color:#fff;font-weight:800;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px;}
+  .signup .txt h2{font-family:'Fredoka';font-weight:700;font-size:30px;line-height:1.02;margin-top:9px;color:var(--ink);}
+  .signup .txt h2 .pink{color:var(--pink-deep);}
+  .signup .txt p{margin-top:7px;font-size:13.5px;font-weight:700;color:var(--ink-soft);line-height:1.4;}
+  .signup .txt .url{margin-top:8px;font-size:11px;font-weight:700;color:var(--purple-deep);
+    word-break:break-all;background:#F6EEFB;padding:6px 10px;border-radius:8px;display:inline-block;}
+
+  .footer{margin-top:12px;display:flex;align-items:center;gap:10px;color:var(--ink-soft);
+    font-weight:800;font-size:12.5px;letter-spacing:.04em;}
+  .footer .dot{width:5px;height:5px;border-radius:50%;background:var(--pink);}
+  .footer .dot.g{background:var(--green);}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="paw-bg"></div>
+
+  <!-- decorative paws -->
+  <div class="deco-paw dp1">
+    <svg viewBox="0 0 100 100"><g fill="#F2709E"><ellipse cx="50" cy="64" rx="20" ry="17"/><ellipse cx="26" cy="40" rx="8" ry="11"/><ellipse cx="42" cy="29" rx="8" ry="12"/><ellipse cx="58" cy="29" rx="8" ry="12"/><ellipse cx="74" cy="40" rx="8" ry="11"/></g></svg>
+  </div>
+  <div class="deco-paw dp2">
+    <svg viewBox="0 0 100 100"><g fill="#46B07A"><ellipse cx="50" cy="64" rx="20" ry="17"/><ellipse cx="26" cy="40" rx="8" ry="11"/><ellipse cx="42" cy="29" rx="8" ry="12"/><ellipse cx="58" cy="29" rx="8" ry="12"/><ellipse cx="74" cy="40" rx="8" ry="11"/></g></svg>
+  </div>
+  <div class="deco-paw dp3">
+    <svg viewBox="0 0 100 100"><g fill="#A24FD0"><ellipse cx="50" cy="64" rx="20" ry="17"/><ellipse cx="26" cy="40" rx="8" ry="11"/><ellipse cx="42" cy="29" rx="8" ry="12"/><ellipse cx="58" cy="29" rx="8" ry="12"/><ellipse cx="74" cy="40" rx="8" ry="11"/></g></svg>
+  </div>
+
+  <div class="frame"></div>
+
+  <div class="content">
+    <!-- LOGO -->
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#C06FE6"/><stop offset="1" stop-color="#8A3CC0"/>
+          </linearGradient>
+        </defs>
+        <!-- heart outline -->
+        <path d="M60 100 C20 70 8 50 8 31 C8 17 19 8 31 8 C42 8 50 15 60 27 C70 15 78 8 89 8 C101 8 112 17 112 31 C112 50 100 70 60 100 Z"
+              stroke="url(#hg)" stroke-width="5.5" fill="none" stroke-linejoin="round"/>
+        <!-- sleeping cat curled inside -->
+        <g fill="url(#hg)">
+          <path d="M44 70 c-12 0 -22 -8 -22 -19 c0 -10 8 -17 18 -17 c4 0 7 1 10 3 c3 -5 8 -8 14 -8 c10 0 18 8 18 18 c0 13 -14 23 -38 23 z"/>
+        </g>
+        <!-- ears -->
+        <path d="M38 36 l-7 -12 l13 4 z" fill="url(#hg)"/>
+        <path d="M58 32 l3 -13 l9 9 z" fill="url(#hg)"/>
+        <!-- sleepy eye + tail accent in light -->
+        <path d="M40 51 q5 4 11 1" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M78 64 q12 -2 9 -14" stroke="url(#hg)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="name">Snaggletooth Cat Rescue</div>
+      <div class="tagline">Where Love Begins</div>
+    </div>
+
+    <!-- HEADLINE -->
+    <div class="eyebrow">🐾 Calling all cat lovers</div>
+    <h1>Volunteers <span class="pink">Wanted</span></h1>
+    <div class="subhead">Help us care for rescued <span class="heart">cats &amp; kittens</span> 🐱</div>
+
+    <!-- HERO PHOTO -->
+    <div class="hero">
+      <div class="dashring"></div>
+      <div class="ring"><div class="inner">
+        <div class="photo">
+          <!-- Replace the block below with: <img src="assets/kitten.jpg" alt="rescue cat"> -->
+          <div class="ph">
+            <svg viewBox="0 0 100 100" fill="currentColor"><path d="M30 24 l-8 -16 l20 8 z"/><path d="M70 24 l8 -16 l-20 8 z"/><path d="M50 20 c-18 0 -30 13 -30 30 c0 16 13 28 30 28 c17 0 30 -12 30 -28 c0 -17 -12 -30 -30 -30 z"/><circle cx="39" cy="46" r="3.4" fill="#fff"/><circle cx="61" cy="46" r="3.4" fill="#fff"/><path d="M50 54 l-3.5 4 h7 z" fill="#fff"/><path d="M50 58 q-4 5 -9 4 M50 58 q4 5 9 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+            <span>Your rescue cat photo here</span>
+          </div>
+        </div>
+      </div></div>
+      <div class="badge"><b>9th+</b><small>Grade</small></div>
+    </div>
+
+    <!-- INTRO -->
+    <p class="intro">It's <b>all about the cats!</b> 🐈 Snaggletooth Cat Rescue is looking for kind,
+      dependable <span class="g">high&#8209;school volunteers</span> to help feed, socialize and cuddle
+      our rescued cats and kittens. <b>Open to students in 9th grade &amp; up.</b></p>
+
+    <!-- CHIPS -->
+    <div class="chips">
+      <div class="chip p"><div class="ic">🐱</div><h3>All About Cats</h3><p>Feed, play with &amp; comfort rescue kitties</p></div>
+      <div class="chip u"><div class="ic">🎓</div><h3>9th Grade &amp; Up</h3><p>Open to high&#8209;school students</p></div>
+      <div class="chip g"><div class="ic">💚</div><h3>Make a Difference</h3><p>Earn service hours &amp; save lives</p></div>
+    </div>
+
+    <!-- SIGN UP / QR -->
+    <div class="signup">
+      <div class="qrwrap">
+        <img src="assets/qr.png" alt="Sign-up QR code">
+        <div class="cap">Scan me 🐾</div>
+      </div>
+      <div class="txt">
+        <span class="k">Ready to help?</span>
+        <h2>Scan to <span class="pink">sign up!</span></h2>
+        <p>Point your phone camera at the code to open our volunteer form — takes 2 minutes.</p>
+        <span class="url">forms.gle &middot; Snaggletooth Cat Rescue Volunteer Sign&#8209;Up</span>
+      </div>
+    </div>
+
+    <div class="footer"><span class="dot"></span> Snaggletooth Cat Rescue <span class="dot g"></span> Where Love Begins <span class="dot"></span></div>
+  </div>
+</div>
+</body>
+</html>
